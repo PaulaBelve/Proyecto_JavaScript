@@ -1,266 +1,231 @@
-// DESAFIO COMPLEMENTARIO - ARRAYS
 
-    // OBJETOS
+//SIMULADOR CARRITO 
 
-  class budines {  
-    
-    constructor(id, nombre, sabor, cantidad, precio) {
-    
+// Function que corta el ciclo del menu principal
+
+let Finalizar;
+
+// OBJETO BUDINES
+
+class budines {
+
+  constructor(id, nombre, sabor, cantidad, precio) {
+
     this.id = id,
-    this.nombre = nombre,
-    this.sabor = sabor,
-    this.cantidad = cantidad,
-    this.precio = precio
-  
+      this.nombre = nombre,
+      this.sabor = sabor,
+      this.cantidad = cantidad,
+      this.precio = precio
+
   }
 
-  mostrarBudines() { 
-  
-    console.log(`El nombre es ${this.nombre}, su sabor ${this.sabor}, el precio es de ${this.precio}, la id es ${this.id}` )} 
-  
+  mostrarBudines() {
+
+    console.log(`El nombre es ${this.nombre}, su sabor ${this.sabor}, el precio es de ${this.precio}, la id es ${this.id}`)
   }
 
- const budines1 = new budines (1,"venus", "cacaoybanana", "" , 1600 )
- 
- const budines2 = new budines (2,"gea", "coco", "", 1200 )
- 
- const budines3 = new budines (3,"poseidon", "frutosrojos", "", 2000 )
- 
- const budines4 = new budines (4,"apollo", "naranja", "", 1500)
- 
+}
+
+const budines1 = new budines(1, "venus", "cacao y banana", "", 1600)
+
+const budines2 = new budines(2, "gea", "coco", "", 1200)
+
+const budines3 = new budines(3, "poseidon", "frutos rojos", "", 2000)
+
+const budines4 = new budines(4, "apollo", "naranja", "", 1500)
+
 // Array de budines
 
- const productos = [budines1, budines2, budines3, budines4];
- console.log (productos)
+const productos = [budines1, budines2, budines3, budines4];
+console.log(productos)
 
- const carrito = [];
- console.log (carrito)
+const carrito = [];
+console.log(carrito)
 
- // Funciones
+// Funciones
 
- // Función que le permita al cliente agregar productos al carrito
+// Función que le permita al cliente agregar productos al carrito
+// Le sume un + 1 al index asi arrancaba desde el numero uno, porque sino se me pisaba con el 0 de finalizar y encontre esta solución
 
-  function NuevoPedido () {
-  let elegirProductos = prompt(`
-            Eliga el número correspondiente del budin que desea comprar
-           
-            1. Nombre: ${productos[0].nombre}
-            Precio: $${productos[0].precio}
-            2. Nombre: ${productos[1].nombre}
-            Precio: $${productos[1].precio}
-            3. Nombre: ${productos[2].nombre}
-            Precio: $${productos[2].precio}
-            4. Nombre: ${productos[3].nombre}
-            Precio: $${productos[3].precio}
-        `)
+function NuevoPedido() {
+  let msg = '';
+  productos.forEach((elem, index) => {
+    msg += ` ${index+1} Nombre: ${elem.nombre} Precio: ${elem.precio}\n`;
+  });
+  let elegirProductos = prompt(msg);
 
-        console.log (NuevoPedido)
-
-        menuBudines(elegirProductos)
- 
+  menuBudines(elegirProductos);
 }
 
 // Function que permita mostrar el catálogo en consola
 
-function Catalogo () {
+function Catalogo() {
 
-  alert ("Podrá ver nuestras opciones en consola")
+  alert("Podrá ver nuestras opciones en consola")
 
   for (let budines of productos) 
-  {console.log (budines)}
+  { console.log(budines) }
 
 }
 
- // Function menu principal de opciones
+// Function menu principal de opciones
 
-function Menu () {
+function Menu() {
 
- let opciones = parseInt(prompt(`Bienvenida/o a delfos cocina! Ingrese la opción que desee realizar:
+  let opciones = parseInt(prompt(`Bienvenida/o a delfos cocina! Ingrese la opción que desee realizar:
                       
                        1 - Mirar la lista de nuestros productos
                        2 - Agregar productos al carrito
-                       3 - Eliminar del carrito
                        0 - Finalizar`))
 
-                       menuDetallado(opciones)
+  menuDetallado(opciones)
 
-                       } 
+}
 
 //Funtion elegir la opción del menu principal
 
-function menuDetallado (opcionSeleccionada){
-  switch(opcionSeleccionada){
-      case 0:
-          Finalizar = true
-          alert(`Gracias por elegirnos!`)
-      break    
-      case 1:
-          Catalogo()
+function menuDetallado(opcionSeleccionada) {
+  switch (opcionSeleccionada) {
+    case 0:
+      Finalizar = true
+      alert(`Gracias por elegirnos!`)
+      break
+    case 1:
+      Catalogo()
 
-      break 
-       case 2: 
-          NuevoPedido()
+      break
+    case 2:
+      NuevoPedido()
 
-      break 
-       case 3: 
-          //eliminarLibro()
-       
-      break 
-       default: 
+      break
+    default:
       alert(`Ingrese una opción correcta`)
   }
 }
-
 //CÓDIGO:
+// Ciclo While que finaliza el menu general
 
-let Finalizar 
-while(Finalizar != true){
-    
-  Menu()
-  
-}
+while (Finalizar != true) {
+
+  Menu() }
 
 // Invocación funciones
 
-// Function que suma nombre - precio - cantidad
+// Function que le devuelve el sabor del budin que pidio
+// Decidi cambiarlo ya que no me salio sumar la cantidad que el cliente pedia - ahora se suma directamente cuando el cliente decide hacer otro pedido
 
-function menuBudines (elegirProductos) {
 
+function menuBudines(elegirProductos) {
 
-switch (elegirProductos) {
-      
-      case "1": (prompt(`ingrese la cantidad que desea pedir:
-        ${productos[0].cantidad}`))
-      carrito.push(productos[0])
-      console.log(carrito)
-      resumenDeCompra("1")
-      break 
-       
-      case "2": (prompt(`ingrese la cantidad que desea pedir:
-      ${productos[1].cantidad}`))
-       carrito.push(productos[1])
-       console.log(carrito)
-       resumenDeCompra("2")
-       break 
-       
-       case "3": prompt(`ingrese la cantidad que desea pedir: 
-       ${productos[2].cantidad}`)
-       carrito.push(productos[2])
-       console.log(carrito)
-       resumenDeCompra("3")
-       break 
-      
-       case "4": (prompt(`ingrese la cantidad que desea pedir:
-        ${productos[3].cantidad}`))
-       carrito.push(productos[3])
-       console.log(carrito)
-       resumenDeCompra("4")
-      
-       break 
-       default: 
-      alert(`Ingrese una opción correcta`)
-       
-    } }
+	
+  switch (elegirProductos) {
+		case '1':
+			alert(`el budin pedido es Venus - Sabor:
+        ${productos[0].sabor}`);
+			carrito.push(productos[0]);
+			console.log(carrito);
+			resumenDeCompra('1');
+			break;
+
+		case '2':
+			alert(`el budin pedido es Gea - Sabor:
+      ${productos[1].sabor}`);
+			carrito.push(productos[1]);
+			console.log(carrito);
+			resumenDeCompra('2');
+			break;
+
+		case '3':
+			alert(`el budin pedido es Poseidon - Sabor:
+       ${productos[2].sabor}`);
+			carrito.push(productos[2]);
+			console.log(carrito);
+			resumenDeCompra('3');
+			break;
+
+		case '4':
+			alert(`el budin pedido es Apollo - Sabor:
+        ${productos[3].sabor}`);
+			carrito.push(productos[3]);
+			console.log(carrito);
+			resumenDeCompra('4');
+
+			break;
+		default:
+			alert(`Ingrese una opción correcta`);
+	}
+}
+
 
 // Function opcion para seguir comprando o finalizar la compra
 
-function resumenDeCompra (elegirProductos) {
+function resumenDeCompra(elegirProductos) {
 
   let seguirComprando = ""
 
   switch (elegirProductos) {
-      case "1" : 
+    case "1":
 
       seguirComprando = prompt("¿Desea hacer otra compra? si/no").toLowerCase();
 
-                if (seguirComprando === "si") {
-                    NuevoPedido()
-                } else {
-                   alert ("Gracias por tu compra!");
-                }
-                break;
-                case "2" : 
+      if (seguirComprando === "si") {
+        NuevoPedido()
+      } else {
+        alert(`El total de compra es: $${CompraTotal()}`)
+        alert("Gracias por tu compra!");
+      }
+      break;
+    case "2":
 
       seguirComprando = prompt("¿Desea hacer otra compra? si/no").toLowerCase();
 
-                if (seguirComprando === "si") {
-                    NuevoPedido()
-                } else {
-                   alert ("Gracias por tu compra!");
-                }
-                break;
-                case "3" : 
+      if (seguirComprando === "si") {
+        NuevoPedido()
+      } else {
+        alert(`El total de compra es: $${CompraTotal()}`)
+        alert("Gracias por tu compra!");
+      }
+      break;
+    case "3":
 
       seguirComprando = prompt("¿Desea hacer otra compra? si/no").toLowerCase();
 
-                if (seguirComprando === "si") {
-                    NuevoPedido()
-                } else {
-                   alert ("Gracias por tu compra!");
-                }
-                break;
-                case "4" : 
+      if (seguirComprando === "si") {
+        NuevoPedido()
+      } else {
+        alert(`El total de compra es: $${CompraTotal()}`)
+        alert("Gracias por tu compra!");
+      }
+      break;
+     case "4":
 
       seguirComprando = prompt("¿Desea hacer otra compra? si/no").toLowerCase();
 
-                if (seguirComprando === "si") {
-                    NuevoPedido()
-                } else {
-                   alert ("Gracias por tu compra!");
-                }
-                break; 
-       default: 
+      if (seguirComprando === "si") {
+        NuevoPedido()
+      } else {
+        alert(`El total de compra es: $${CompraTotal()}`)
+        alert("Gracias por tu compra!");
+      }
+      break;
+    default:
       alert(`Ingrese una opción correcta`)
-      resumenDeCompra (elegirProductos)
-       break    } }
-
-       carrito.forEach((productos)=> {
-        console.log(`${productos.nombre} - $${productos.precio}`)
-    }) 
-    
-    alert(`El total de compra es: $${CompraTotal()}`)
-  
-  function CompraTotal(){
-
-           let total = carrito.reduce((total, budines) => total + budines.precio, 0);
-      return total;
-  }
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-  
-  
- 
-
-     
+      resumenDeCompra(elegirProductos)
       
- 
+  }
+}
 
- 
+// FUCTION COMPRA TOTAL
 
+carrito.forEach((productos) => {
+  console.log(`${productos.nombre} - $${productos.precio}`)
+}) 
 
+function CompraTotal() {
 
-     
-    
-    
-    
-
-
-
-  
-
-
+  let total = carrito.reduce((total, budines) => total + budines.precio, 0);
+  return total;
+} 
 
 
 
@@ -269,7 +234,43 @@ function resumenDeCompra (elegirProductos) {
 
 
 
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
