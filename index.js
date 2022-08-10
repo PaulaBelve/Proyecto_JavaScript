@@ -1,21 +1,17 @@
 
 //SIMULADOR CARRITO 
 
-// Function que corta el ciclo del menu principal
-
-let Finalizar;
-
 // OBJETO BUDINES
 
-class budines {
+ class budines {
 
-  constructor(id, nombre, sabor, cantidad, precio) {
+  constructor(id, nombre, sabor, precio, imagen) {
 
-    this.id = id,
+      this.id = id,
       this.nombre = nombre,
       this.sabor = sabor,
-      this.cantidad = cantidad,
-      this.precio = precio
+      this.precio = precio,
+      this.imagen = imagen
 
   }
 
@@ -24,257 +20,92 @@ class budines {
     console.log(`El nombre es ${this.nombre}, su sabor ${this.sabor}, el precio es de ${this.precio}, la id es ${this.id}`)
   }
 
+  // Sumar la cantidad pedida
+
 }
 
-const budines1 = new budines(1, "venus", "cacao y banana", "", 1600)
+const budines1 = new budines(1, "Venus", "Cacao y banana", 1000, "img/recchoco.png")
 
-const budines2 = new budines(2, "gea", "coco", "", 1200)
+const budines2 = new budines(2, "Gea", "Coco", 1200, "img/Reccoco.png")
 
-const budines3 = new budines(3, "poseidon", "frutos rojos", "", 2000)
+const budines3 = new budines(3, "Poseidon", "Frutos rojos", 1250, "img/RecFr.png")
 
-const budines4 = new budines(4, "apollo", "naranja", "", 1500)
+const budines4 = new budines(4, "Apollo", "Naranja", 900, "img/RecNar.png")
 
 // Array de budines
 
 const productos = [budines1, budines2, budines3, budines4];
 console.log(productos)
 
-const carrito = [];
-console.log(carrito)
 
-// Funciones
+// Pasando html a js
+//let mercaderia = document.getElementsByClassName("cardBudines")
 
-// Función que le permita al cliente agregar productos al carrito
-// Le sume un + 1 al index asi arrancaba desde el numero uno, porque sino se me pisaba con el 0 de finalizar y encontre esta solución
+let divBudines = document.getElementById ("mercaderia")
 
-function NuevoPedido() {
-  let msg = '';
-  productos.forEach((elem, index) => {
-    msg += ` ${index+1} Nombre: ${elem.nombre} Precio: ${elem.precio}\n`;
-  });
-  let elegirProductos = prompt(msg);
+productos.forEach((budines) =>  {
 
-  menuBudines(elegirProductos);
-}
+let carritoProductos = document.createElement("div")
+carritoProductos.innerHTML = `
+                          <section id= ${budines.id} class="cardBudines">
 
-// Function que permita mostrar el catálogo en consola
+                          <div class="divBudines">
 
-function Catalogo() {
+                          <article class=boxBudines>
+                          <picture class="boxBudines__img">
+                          <img src="${budines.imagen}" alt="">
+                           </picture>
 
-  alert("Podrá ver nuestras opciones en consola")
+                          <div class="boxBudines__info">
 
-  for (let budines of productos) 
-  { console.log(budines) }
+                          <h2 class="boxBudines__title">${budines.nombre}</h2>
+                          <h3 class="boxBudines__subtitle">${budines.sabor}</h3>
 
-}
+                         <p class="boxBudines__precio"> Precio: ${budines.precio} </p>
+                         
+                         <button type="button" onclick="agregarCarrito(${budines.id})" class="btn btn-outline-secondary"> Compra </button>
 
-// Function menu principal de opciones
+                         </div>
+                         </article>`
 
-function Menu() {
+     //  mercaderia.appendChild(carritoProductos)                       
+   
+     divBudines.appendChild(carritoProductos)
 
-  let opciones = parseInt(prompt(`Bienvenida/o a delfos cocina! Ingrese la opción que desee realizar:
-                      
-                       1 - Mirar la lista de nuestros productos
-                       2 - Agregar productos al carrito
-                       0 - Finalizar`))
-
-  menuDetallado(opciones)
-
-}
-
-//Funtion elegir la opción del menu principal
-
-function menuDetallado(opcionSeleccionada) {
-  switch (opcionSeleccionada) {
-    case 0:
-      Finalizar = true
-      alert(`Gracias por elegirnos!`)
-      break
-    case 1:
-      Catalogo()
-
-      break
-    case 2:
-      NuevoPedido()
-
-      break
-    default:
-      alert(`Ingrese una opción correcta`)
-  }
-}
-//CÓDIGO:
-// Ciclo While que finaliza el menu general
-
-while (Finalizar != true) {
-
-  Menu() }
-
-// Invocación funciones
-
-// Function que le devuelve el sabor del budin que pidio
-// Decidi cambiarlo ya que no me salio sumar la cantidad que el cliente pedia - ahora se suma directamente cuando el cliente decide hacer otro pedido
+  })
 
 
-function menuBudines(elegirProductos) {
+// Class carrito 
 
-	
-  switch (elegirProductos) {
-		case '1':
-			alert(`el budin pedido es Venus - Sabor:
-        ${productos[0].sabor}`);
-			carrito.push(productos[0]);
-			console.log(carrito);
-			resumenDeCompra('1');
-			break;
+ class carrito { 
 
-		case '2':
-			alert(`el budin pedido es Gea - Sabor:
-      ${productos[1].sabor}`);
-			carrito.push(productos[1]);
-			console.log(carrito);
-			resumenDeCompra('2');
-			break;
+  constructor(nombre, cantidad) {
+  
+  this.nombre = nombre,
+  this.cantidad = cantidad 
+}} 
 
-		case '3':
-			alert(`el budin pedido es Poseidon - Sabor:
-       ${productos[2].sabor}`);
-			carrito.push(productos[2]);
-			console.log(carrito);
-			resumenDeCompra('3');
-			break;
+const arrayCarrito = []
 
-		case '4':
-			alert(`el budin pedido es Apollo - Sabor:
-        ${productos[3].sabor}`);
-			carrito.push(productos[3]);
-			console.log(carrito);
-			resumenDeCompra('4');
+function agregarCarrito (prod) {
 
-			break;
-		default:
-			alert(`Ingrese una opción correcta`);
-	}
+  console.log(prod)
 }
 
 
-// Function opcion para seguir comprando o finalizar la compra
-
-function resumenDeCompra(elegirProductos) {
-
-  let seguirComprando = ""
-
-  switch (elegirProductos) {
-    case "1":
-
-      seguirComprando = prompt("¿Desea hacer otra compra? si/no").toLowerCase();
-
-      if (seguirComprando === "si") {
-        NuevoPedido()
-      } else {
-        alert(`El total de compra es: $${CompraTotal()}`)
-        alert("Gracias por tu compra!");
-      }
-      break;
-    case "2":
-
-      seguirComprando = prompt("¿Desea hacer otra compra? si/no").toLowerCase();
-
-      if (seguirComprando === "si") {
-        NuevoPedido()
-      } else {
-        alert(`El total de compra es: $${CompraTotal()}`)
-        alert("Gracias por tu compra!");
-      }
-      break;
-    case "3":
-
-      seguirComprando = prompt("¿Desea hacer otra compra? si/no").toLowerCase();
-
-      if (seguirComprando === "si") {
-        NuevoPedido()
-      } else {
-        alert(`El total de compra es: $${CompraTotal()}`)
-        alert("Gracias por tu compra!");
-      }
-      break;
-     case "4":
-
-      seguirComprando = prompt("¿Desea hacer otra compra? si/no").toLowerCase();
-
-      if (seguirComprando === "si") {
-        NuevoPedido()
-      } else {
-        alert(`El total de compra es: $${CompraTotal()}`)
-        alert("Gracias por tu compra!");
-      }
-      break;
-    default:
-      alert(`Ingrese una opción correcta`)
-      resumenDeCompra(elegirProductos)
-      
-  }
-}
-
-// FUCTION COMPRA TOTAL
-
-carrito.forEach((productos) => {
-  console.log(`${productos.nombre} - $${productos.precio}`)
-}) 
-
-function CompraTotal() {
-
-  let total = carrito.reduce((total, budines) => total + budines.precio, 0);
-  return total;
-} 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* <section id= ${budines.id} class="cardBudines"> 
+                              <img class="imgCard" src="${budines.imagen}" alt="">
+                              <div class="info">
+                              <h2 class="nombreCard"> ${budines.nombre}</h2>
+                              <h3 class="saborCard">  ${budines.sabor}</h3>
+                              <p class="precioCard"> Precio: ${budines.precio}</p>
+                              </div> 
+                              </section> */
+
+                           //   <a onclick="agregarCarrito(${budines.nombre})" class="btn btn-primary"> Comprar </a>
+                              
+                              
+//divBudines.setAttribute("class", "divBudines")
+//divBudines.setAttribute("class", "boxBudines")
 
 
