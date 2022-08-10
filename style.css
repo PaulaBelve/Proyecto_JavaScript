@@ -21,6 +21,19 @@ html {
     font-size: 62.5%;
 }
 
+
+/* Catálogo */
+
+#verCatalogo {
+
+    font-size: 1.5em;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: cornflowerblue;
+    margin-top: 4rem;
+
+
+}
+
 /* Card budines */
 
 .cardBudines {
@@ -95,8 +108,15 @@ html {
             margin: 2rem 2rem 2rem 2rem;
         }
 
-        .btn-primary {
-         margin: 2rem; }
+        .btn-outline-secondary {
+
+            font-size: 1.5em;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: cornflowerblue;
+            margin: 5rem;
+            
+           
+         }
          
 
        

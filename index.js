@@ -39,9 +39,16 @@ console.log(productos)
 
 
 // Pasando html a js
-//let mercaderia = document.getElementsByClassName("cardBudines")
 
 let divBudines = document.getElementById ("mercaderia")
+
+//divBudines.setAttribute("class", "divBudines")
+//divBudines.setAttribute("class", "boxBudines")
+
+
+divBudines.classList.add('divBudines');
+divBudines.classList.add('boxBudines');
+
 
 productos.forEach((budines) =>  {
 
@@ -67,13 +74,11 @@ carritoProductos.innerHTML = `
 
                          </div>
                          </article>`
-
-     //  mercaderia.appendChild(carritoProductos)                       
+                       
    
      divBudines.appendChild(carritoProductos)
 
   })
-
 
 // Class carrito 
 
@@ -83,29 +88,45 @@ carritoProductos.innerHTML = `
   
   this.nombre = nombre,
   this.cantidad = cantidad 
-}} 
+}
+
+sumaCantidad (){
+
+  this.cantidad = this.cantidad + 1
+}
+
+} 
 
 const arrayCarrito = []
 
-function agregarCarrito (prod) {
+// onclick sumar la cantidad pedida al carrito
 
-  console.log(prod)
+function agregarCarrito (prod) {
+console.log(prod)
+
+let agregarAlCarrito = new carrito (prod, 1)
+arrayCarrito.push(agregarAlCarrito)
+
+}
+
+// mostrar funcion catalogo por Alert
+
+function Catalogo() {
+
+  alert("Podrá ver nuestras opciones en consola")
+
+  for (let budines of productos) 
+  { console.log(budines) }
+
 }
 
 
-/* <section id= ${budines.id} class="cardBudines"> 
-                              <img class="imgCard" src="${budines.imagen}" alt="">
-                              <div class="info">
-                              <h2 class="nombreCard"> ${budines.nombre}</h2>
-                              <h3 class="saborCard">  ${budines.sabor}</h3>
-                              <p class="precioCard"> Precio: ${budines.precio}</p>
-                              </div> 
-                              </section> */
+let botonCatalogo = document.getElementsByClassName("verCatalogo")
 
-                           //   <a onclick="agregarCarrito(${budines.nombre})" class="btn btn-primary"> Comprar </a>
+const verCatalogo = addEventListener("click", Catalogo) 
+
                               
                               
-//divBudines.setAttribute("class", "divBudines")
-//divBudines.setAttribute("class", "boxBudines")
+
 
 
