@@ -42,18 +42,15 @@ console.log(productos)
 
 let divBudines = document.getElementById ("mercaderia")
 
-//divBudines.setAttribute("class", "divBudines")
-//divBudines.setAttribute("class", "boxBudines")
-
-
 divBudines.classList.add('divBudines');
-divBudines.classList.add('boxBudines');
+//divBudines.classList.add('boxBudines');
+
 
 
 productos.forEach((budines) =>  {
 
-let carritoProductos = document.createElement("div")
-carritoProductos.innerHTML = `
+
+divBudines.innerHTML += `
                           <section id= ${budines.id} class="cardBudines">
 
                           <div class="divBudines">
@@ -70,60 +67,55 @@ carritoProductos.innerHTML = `
 
                          <p class="boxBudines__precio"> Precio: ${budines.precio} </p>
                          
-                         <button type="button" onclick="agregarCarrito(${budines.id})" class="btn btn-outline-secondary"> Compra </button>
+                         <button type="button" onclick="return agregarCarrito(${budines.id})" class="btn btn-outline-secondary"> Compra </button>
 
                          </div>
                          </article>`
                        
-   
-     divBudines.appendChild(carritoProductos)
+  }) 
 
-  })
-
-// Class carrito 
-
- class carrito { 
-
-  constructor(nombre, cantidad) {
+  class carrito {
+    constructor(nombre, cantidad) {
+      (this.nombre = nombre), (this.cantidad = cantidad);
+    }
   
-  this.nombre = nombre,
-  this.cantidad = cantidad 
-}
-
-sumaCantidad (){
-
-  this.cantidad = this.cantidad + 1
-}
-
-} 
-
-const arrayCarrito = []
-
-// onclick sumar la cantidad pedida al carrito
-
-function agregarCarrito (prod) {
-console.log(prod)
-
-let agregarAlCarrito = new carrito (prod, 1)
-arrayCarrito.push(agregarAlCarrito)
-
-}
-
+    sumaCantidad() {
+      this.cantidad = this.cantidad + 1;
+    }
+  }
+  
+  const arrayCarrito = [];
+  
+  // onclick sumar la cantidad pedida al carrito
+  
+  function agregarCarrito(prod) {
+    let producto = productos.find(elem => elem.id == prod);
+    console.log(producto);
+    console.log('id producto' + prod);
+  
+    let agregarAlCarrito = new carrito(prod, 1);
+    arrayCarrito.push(agregarAlCarrito);
+  }
+  
 // mostrar funcion catalogo por Alert
 
-function Catalogo() {
+function Catalogo(e) {
+	e.preventDefault();
+	alert('Podrá ver nuestras opciones en consola');
 
-  alert("Podrá ver nuestras opciones en consola")
-
-  for (let budines of productos) 
-  { console.log(budines) }
-
+	for (let budines of productos) {
+		console.log(budines);
+	}
 }
 
+let botonCatalogo = document.getElementsByClassName('verCatalogo')[0];
 
-let botonCatalogo = document.getElementsByClassName("verCatalogo")
+botonCatalogo.addEventListener('click', Catalogo);
 
-const verCatalogo = addEventListener("click", Catalogo) 
+
+
+
+
 
                               
                               
