@@ -22,6 +22,25 @@ html {
 }
 
 
+
+.logo {
+
+    height: 300px;
+    width: 300px;
+   
+}
+
+.estilosBotonCarrito {
+
+    height: 30px;
+    width: 30px;
+    margin: 0% 3rem;
+    color: grey;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
 /* Catálogo */
 
 /*#verCatalogo {
@@ -43,7 +62,7 @@ html {
     justify-content:space-between ;
     align-items: center ;
     gap: 8rem ;
-    margin-top: 8%;
+    margin-top: 4%;
     font-size: 1.5em;
  
 }
@@ -113,7 +132,7 @@ html {
             font-size: 1.5em;
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             color: cornflowerblue;
-            margin: 5rem;
+            margin: 2rem 5rem 2rem 5rem;
             
            
          }
