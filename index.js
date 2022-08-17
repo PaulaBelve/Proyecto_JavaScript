@@ -19,9 +19,6 @@
 
     console.log(`El nombre es ${this.nombre}, su sabor ${this.sabor}, el precio es de ${this.precio}, la id es ${this.id}`)
   }
-
-
-
 }
 
 const budin1 = new budines(1, "Venus", "Cacao y banana", 1000, "img/recchoco.png")
@@ -42,15 +39,20 @@ const budin4 = new budines(4, "Apollo", "Naranja", 900, "img/RecNar.png")
     }
   }
  
-
-  // Array de budines y carrito
+// Array de budines y carrito
 
 let productos = [];
 
 let arrayCarrito = [];
 
-
-
+//Elementos DOM 
+let botonCarrito = document.getElementById("botonCarrito");
+let modalBody = document.getElementById("modalBody");
+let botonFinalizarCompra = document.getElementById("botonFinalizarCompra");
+let parrafoEnvio = document.getElementById('parrafoEnvio')
+let parrafoTotal = document.getElementById('totalPedido');
+let acumulador 
+let divBudines = document.getElementById('cards-productos');
 
 // Array productos que se imprima en el local Storage.
 
@@ -77,18 +79,15 @@ if (localStorage.getItem ("Carrito")) {
 
 // Pasando html a js
 
-let divBudines = document.getElementById ("cards-productos")
+function mostrarProductos() {
+	
+  divBudines.classList.add('divBudines');
 
-function mostrarProductos () {
-
-divBudines.classList.add('divBudines');
-//divBudines.classList.add('boxBudines');
-
-productos.forEach((budin) =>  {
-
-divBudines.innerHTML += `
-                          <section id= "${budin.id}" class="cardBudines">
-
+	productos.forEach(budin => {
+		const section = document.createElement('section');
+		section.className = 'cardBudines';
+		section.setAttribute('id', budin.id);
+		section.innerHTML = `
                           <div class="divBudines">
 
                           <article class=boxBudines>
@@ -98,29 +97,33 @@ divBudines.innerHTML += `
 
                           <div class="boxBudines__info">
 
-                          <h2 class="boxBudines__title">"${budin.nombre}"</h2>
-                          <h3 class="boxBudines__subtitle">"${budin.sabor}"</h3>
+                          <h2 class="boxBudines__title">${budin.nombre}</h2>
+                          <h3 class="boxBudines__subtitle">${budin.sabor}</h3>
 
                          <p class="boxBudines__precio"> Precio: "$${budin.precio}" </p>
                          
                          <button id="btnComprar${budin.id}" class="btn btn-outline-secondary">Comprar</button>
 
                          </div>
-                         </article>`
-                       
-
-
-// BTN sumar productos al carrito - el click agrega el producto correspondiente al carrito
-
-  let agregarProducto = document.getElementById(`btnComprar${budin.id}`)
-   console.log (agregarProducto)
-agregarProducto.addEventListener("click", () => {agregarCarrito(budin)})
-}) 
- 
+                         </article>`;
+		
+                         divBudines.append(section);
+		
+		
+		// BTN sumar productos al carrito - el click agrega el producto correspondiente al carrito
+		
+		
+		document.getElementById(`btnComprar${budin.id}`).addEventListener('click', e => {
+			e.preventDefault();
+			agregarCarrito(budin);
+		});
+	});
 }
+
+// Función mostrarProductos
+
+mostrarProductos()
  
-
-
 // Función que agregue la cantidad elegida particularmente del producto que se esta eligiendo
   
 function agregarCarrito(budin) {
@@ -131,15 +134,84 @@ console.log(`El budin ${budin.nombre}, de ${budin.sabor}, se agrego correctament
     localStorage.setItem("Carrito", JSON.stringify(arrayCarrito))
   }
 
-  //mostrarProductos
+  // Evento botonCarrito - llama a la función de productosAlcarrito
 
-  mostrarProductos()
+botonCarrito.addEventListener("click", () => {
+ 
+  productosAlCarrito(arrayCarrito)
+
+})
+
 
  // Función que vaya sumando la cantidad elegida (acumulador) id - cantidad * precio
 
-  // Función total del pedido
+ function productosAlCarrito (productosGuardados) {
 
-  // Función que calcule el envio - envio sin costo, $200 de envio - (IF)
+  productosGuardados.forEach((productosCarrito) => {
+
+    modalBody.innerHTML = `
+    
+    <section class="cardBudines" id ="productosCarrito${productosCarrito.id}">
+    <article class=boxBudines>
+                          <picture class="boxBudines__img">
+                          <img src="${productosCarrito.imagen}" alt="">
+                           </picture>
+
+                          <div class="boxBudines__info">
+                          <h2 class="boxBudines__title">"${productosCarrito.nombre}"</h2>
+                          <p class="boxBudines__precio"> Precio: "$${productosCarrito.precio}" </p>
+      
+           
+        </div>  
+        </article>   
+    </section>`
+
+    
+   
+  })
+  
+    compraTotal(productosCarrito) 
+    console.log(compraTotal)
+
+} 
+
+
+
+// Función total del pedido
+
+
+function compraTotal(productosTotal) {
+    acumulador = 0;
+    //recorrer productosTotal
+    productosTotal.forEach((productosCarrito)=>{
+        acumulador += productosCarrito.precio 
+    })
+    console.log(acumulador)
+    //if acumulador = 0 o !=
+    if(acumulador == 0){
+        parrafoTotal.innerHTML = `<p>No hay productos en el carrito</p>`
+    }else{
+        parrafoTotal.innerHTML = `Importe de su compra ${acumulador}`
+    }}
+   
+
+  // Función que calcule el envio - envio sin costo - $200 de envio - (IF - ELSE)
+
+  function ValidarEnvio (acumulador) {
+
+    if (acumulador <= 1500) {parrafoEnvio.innerHTML = `<p>Debe abonar $200 de envío</p>`
+      
+    
+  }else if (acumulador >= 3000){ 
+      
+      parrafoEnvio.innerHTML = `<p>Envio sin cargo!</p>`
+      
+} }
+
+ValidarEnvio(acumulador)
+
+
+
     
    
 

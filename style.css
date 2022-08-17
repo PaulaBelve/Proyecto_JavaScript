@@ -21,6 +21,15 @@ html {
     font-size: 62.5%;
 }
 
+h1 {
+    margin: 0 5rem 0 5rem;
+    text-align: center;
+    font-size: 3.5em;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: midnightblue;
+    
+}
+
 
 
 .logo {
@@ -30,14 +39,40 @@ html {
    
 }
 
+.navHeader {
+
+    margin: 2rem ;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.menuNav {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    list-style: none;
+    
+}
+
+.nav_item .nav_link {
+
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1.5em;
+    color: grey;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+}
+
 .estilosBotonCarrito {
 
     height: 30px;
     width: 30px;
     margin: 0% 3rem;
     color: grey;
-    display: flex;
-    justify-content: flex-end;
+  
 }
 
 

@@ -1,52 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto-javaScript</title>
 
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
-
+    <title>Proyecto-javaScript</title>
 </head>
 
 
 <body>
 
+    <!-- HEADER - ICONO DEL CARRITO -->
+    
     <header class="divHeader">
 
+        <nav class="navHeader">
+            <ul class="menuNav">
+                <li class="nav_item"><a href="" class="nav_link">Tienda</a></li>
+                <li class="nav_item"><a href="" class="nav_link">Contacto</a></li>
+                <li class="nav_item"><a href="" class="nav_link"><img
+                            src="./img/2703085_bag_cart_ecommerce_shop_icon.png" class="estilosBotonCarrito"
+                            id="botonCarrito" alt=""></a></li>
+            </ul>
 
-<nav class="navHeader">
-<ul class="menuNav">
-<li class="nav_item"><a href="" class="nav_link"></a></li>
-<li class="nav_item"><a href="" class="nav_link"></a></li>
-<li class="nav_item"><a href="" class="nav_link"></a></li> </ul>
+        </nav>
 
-<a id="botonCarrito" ><img src="./img/2703085_bag_cart_ecommerce_shop_icon.png" class="estilosBotonCarrito" alt=""></a>
-
-</nav>
-            
-        
-        
         <div>
-              <img class="logo" src="./img/delfos sombra.png" alt="">
+            <img class="logo" src="./img/delfos sombra.png" alt="">
+        </div>
+
+    </header>
+
+    <h1><b>BUDINES</b></h1>
+
+    <!-- Hoja carrito -->
+
+    <section id="hojaCarrito">
+
+        <div class="modal fade" id="idModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Carrito de compras</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modalBody">
+                       <div><p id="totalPedido"></p></div>
+                       <div><p id="parrafoEnvio"></p></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Finalizar compra</button>
+                    </div>
+                </div>
             </div>
-
-        </header>
-
- <main id="cards-productos">
+        </div>
+    </section> 
 
     
-      
-  
-  
-</main> 
+        <main id="cards-productos">
 
-<!--<button class="verCatalogo">Ver catálogo</button> -->
-<script src="index.js"></script>
-  
+
+            <!--  <button type="button" id="buttonCancelar" class="btn btn-outline-secondary">Cancelar</button>
+        <button type="button" id="buttonFinalizarCompra"  class="btn btn-outline-secondary">Finalizar compra</button> -->
+
+
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+        <script src="index.js"></script>
+
 </body>
+
 </html>
-
-
