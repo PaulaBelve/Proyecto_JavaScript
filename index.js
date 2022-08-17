@@ -170,7 +170,7 @@ botonCarrito.addEventListener("click", () => {
    
   })
   
-    compraTotal(productosCarrito) 
+    compraTotal(productosGuardados) 
     console.log(compraTotal)
 
 } 
