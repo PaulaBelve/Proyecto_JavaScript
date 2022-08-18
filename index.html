@@ -1,80 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Proyecto-javaScript</title>
-</head>
+  </head>
 
-
-<body>
-
+  <body>
     <!-- HEADER - ICONO DEL CARRITO -->
-    
+
     <header class="divHeader">
+      <nav class="navHeader">
+        <ul class="menuNav">
+          <li class="nav_item"><a href="" class="nav_link">Tienda</a></li>
+          <li class="nav_item"><a href="" class="nav_link">Contacto</a></li>
+          <li class="nav_item">
+            <a class="nav_link"><img src="./img/2703085_bag_cart_ecommerce_shop_icon.png" class="estilosBotonCarrito" id="botonCarrito" alt="" /></a>
+          </li>
+        </ul>
+      </nav>
 
-        <nav class="navHeader">
-            <ul class="menuNav">
-                <li class="nav_item"><a href="" class="nav_link">Tienda</a></li>
-                <li class="nav_item"><a href="" class="nav_link">Contacto</a></li>
-                <li class="nav_item"><a href="" class="nav_link"><img
-                            src="./img/2703085_bag_cart_ecommerce_shop_icon.png" class="estilosBotonCarrito"
-                            id="botonCarrito" alt=""></a></li>
-            </ul>
-
-        </nav>
-
-        <div>
-            <img class="logo" src="./img/delfos sombra.png" alt="">
-        </div>
-
+      <div>
+        <img class="logo" src="./img/delfos sombra.png" alt="" />
+      </div>
     </header>
 
     <h1><b>BUDINES</b></h1>
 
     <!-- Hoja carrito -->
 
-    <section id="hojaCarrito">
+    <section id="hojaCarrito"></section>
 
-        <div class="modal fade" id="idModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Carrito de compras</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body" id="modalBody">
-                       <div><p id="totalPedido"></p></div>
-                       <div><p id="parrafoEnvio"></p></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary">Finalizar compra</button>
-                    </div>
-                </div>
-            </div>
+    <main id="cards-productos"></main>
+
+    <!-- Trigger/Open The Modal -->
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Modal Header</h2>
         </div>
-    </section> 
+        <div id="modal-body">
+            
+        </div>
+        <div class="modal-footer">
+          <h3>Modal Footer</h3>
+        </div>
+      </div>
+    </div>
 
-    
-        <main id="cards-productos">
-
-
-            <!--  <button type="button" id="buttonCancelar" class="btn btn-outline-secondary">Cancelar</button>
-        <button type="button" id="buttonFinalizarCompra"  class="btn btn-outline-secondary">Finalizar compra</button> -->
-
-
-        </main>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-        <script src="index.js"></script>
-
-</body>
-
+    <script src="index.js"></script>
+  </body>
 </html>
+
+
