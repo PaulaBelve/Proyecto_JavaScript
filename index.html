@@ -1,52 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Proyecto-javaScript</title>
+  </head>
 
-    
-    <link rel="stylesheet" href="./style.css">
-
-</head>
-
-
-<body>
+  <body>
+    <!-- HEADER - ICONO DEL CARRITO -->
 
     <header class="divHeader">
+      <nav class="navHeader">
+        <ul class="menuNav">
+          <li class="nav_item"><a href="" class="nav_link">Tienda</a></li>
+          <li class="nav_item"><a href="" class="nav_link">Contacto</a></li>
+          <li class="nav_item">
+            <a class="nav_link"><img src="./img/2703085_bag_cart_ecommerce_shop_icon.png" class="estilosBotonCarrito" id="botonCarrito" alt="" /></a>
+          </li>
+        </ul>
+      </nav>
 
+      <div>
+        <img class="logo" src="./img/delfos sombra.png" alt="" />
+      </div>
+    </header>
 
-<nav class="navHeader">
-<ul class="menuNav">
-<li class="nav_item"><a href="" class="nav_link"></a></li>
-<li class="nav_item"><a href="" class="nav_link"></a></li>
-<li class="nav_item"><a href="" class="nav_link"></a></li> </ul>
+    <h1><b>BUDINES</b></h1>
 
-<a id="botonCarrito" ><img src="./img/2703085_bag_cart_ecommerce_shop_icon.png" class="estilosBotonCarrito" alt=""></a>
+    <!-- Hoja carrito -->
 
-</nav>
+    <section id="hojaCarrito"></section>
+
+    <main id="cards-productos"></main>
+
+    <!-- Trigger/Open The Modal -->
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Modal Header</h2>
+        </div>
+        <div id="modal-body">
             
-        
-        
-        <div>
-              <img class="logo" src="./img/delfos sombra.png" alt="">
-            </div>
+        </div>
+        <div class="modal-footer">
+          <h3>Modal Footer</h3>
+        </div>
+      </div>
+    </div>
 
-        </header>
-
- <main id="cards-productos">
-
-    
-      
-  
-  
-</main> 
-
-<!--<button class="verCatalogo">Ver catálogo</button> -->
-<script src="index.js"></script>
-  
-</body>
+    <script src="index.js"></script>
+  </body>
 </html>
 
 
