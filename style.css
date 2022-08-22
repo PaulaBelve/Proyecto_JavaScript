@@ -25,13 +25,14 @@ h1 {
     text-align: center;
     font-size: 3.5em;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: midnightblue;
+    color: rgb(45, 45, 126);
     
 }
 
 
 
-.logo {
+ .logo {
+
 
     height: 300px;
     width: 300px;
@@ -43,7 +44,7 @@ h1 {
     margin: 2rem ;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .menuNav {
@@ -73,10 +74,6 @@ h1 {
     color: grey;
   
 }
-
-
-
-
 
 /* Card budines */
 
@@ -180,10 +177,10 @@ h1 {
           .modal-content {
             position: relative;
             background-color: #fefefe;
-            margin: auto;
+            margin: auto ;
             padding: 0;
             border: 1px solid #888;
-            width: 20rem;
+            width: 25rem;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             animation-name: animatetop;
             animation-duration: 0.4s;
@@ -192,8 +189,11 @@ h1 {
           }
           .modal-header {
               padding: 2px 16px;
-              background-color: #5cb85c;
+              background-color: cornflowerblue;
               color: white;
+              font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+              font-size: 1.5em;
+              text-align: center;
           }
           
           /* Modal Body */
@@ -203,10 +203,37 @@ h1 {
           
           /* Modal Footer */
           .modal-footer {
-            padding: 2px 16px;
-            background-color: #5cb85c;
+            padding: 3px 16px;
+            background-color: cornflowerblue;
             color: white;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 1.5em;
+            text-align: center;
           }
+
+
+          #parrafoTotal {
+
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 1.6em;
+            color: #888;
+            margin-top: 1rem;
+            text-align: center;
+
+
+
+          }
+
+          #parrafoEnvio {
+
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 1.6em;
+            color: #888;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+ }
+
           
           
           /* Add Animation */

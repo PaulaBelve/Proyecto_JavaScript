@@ -31,6 +31,7 @@ class carrito {
 // Array de budines y carrito
 
 let productos = [];
+//console.log(...productos)
 
 let arrayCarrito = [];
 
@@ -120,25 +121,7 @@ function agregarCarrito(budin) {
 
 // Evento botonCarrito - llama a la función de productosAlcarrito
 
-// Función que vaya sumando la cantidad elegida (acumulador) id - cantidad * precio
-/*const getCart = list => {
-  const carts = list?.map(
-    item =>
-      ` <div class="cardBudines" id ="productosCarrito${item.id}">
-    <article class=boxBudines>
-                          <picture class="boxBudines__img">
-                          <img src="${item.imagen}" alt="">
-                           </picture>
-
-                          <div class="boxBudines__info">
-                          <h2 class="boxBudines__title">"${item.nombre}"</h2>
-                          <p class="boxBudines__precio"> Precio: "$${item.precio}" </p>       
-        </div>  
-        </article>   
-    </div>`
-  );
-  document.getElementsByClassName('modal-body').innerHTML = carts.join('');
-}; */
+// Función que vaya sumando la cantidad elegida (acumulador) id - cantidad * precio - PRIMERA PRUEBA
 
 /* function productosAlCarrito(productosGuardados) {
   console.log(productosGuardados);
@@ -160,32 +143,46 @@ function agregarCarrito(budin) {
   compraTotal(productosGuardados);
 } */
 
+// CAMBIAR
+
 // Función total del pedido
 
 function compraTotal(productosTotal) {
+ 
   //recorrer productosTotal
+ 
   productosTotal.forEach(productosCarrito => {
     acumulador += productosCarrito.precio;
-  });
-  console.log(acumulador);
+ //});
+  
+  
   //if acumulador = 0 o !=
-  if (acumulador == 0) {
+
+ acumulador > 0 ? `El total de su compra es de: ${acumulador}` : `<p>No hay productos en el carrito</p>` }) 
+  
+  
+} ;
+//;
+/*  if (acumulador == 0) {
     return `<p>No hay productos en el carrito</p>`;
   } else {
-    return `Importe de su compra ${acumulador}`;
+    return `El total de su compra es de: ${acumulador}`;
   }
-}
+} */ 
 
 // Función que calcule el envio - envio sin costo - $200 de envio - (IF - ELSE)
 
 function ValidarEnvio(acu) {
-  if (acu <= 1500) {
+
+  const data = acu >= 3000 ? `<p>Envio sin cargo!</p>` : `<p>Debe abonar $200 de envío</p>` ;
+
+console.log(data)  } 
+ 
+ /* if (acu <= 1500) {
     return `<p>Debe abonar $200 de envío</p>`;
   } else if (acu >= 3000) {
     return `<p>Envio sin cargo!</p>`;
-  }
-}
-
+  } */
 
 // Get the modal
 let modal = document.getElementById('myModal');
@@ -197,6 +194,7 @@ let btn = document.getElementById('myBtn');
 let span = document.getElementsByClassName('close')[0];
 
 // When the user clicks on the button, open the modal
+
 botonCarrito.onclick = function () {
 
   const carts = arrayCarrito.map(
@@ -209,32 +207,62 @@ botonCarrito.onclick = function () {
   
                           <div class="boxBudines__info">
                           <h2 class="boxBudines__title">"${item.nombre}"</h2>
-                          <p class="boxBudines__precio"> Precio: "$${item.precio}" </p>       
+                          <p class="boxBudines__precio"> Precio: "$${item.precio}"</p>       
         </div>  
         </article>   
     </div>`
-  );
-  console.log(acumulador)
+
+  )
+
+  // CORREGIR - CADA VEZ QUE TOCO EL CARRITO ME SUMA MAS DEL BUDIN SELECCIONADO
+  
+  console.log(acumulador) 
   const parrafos=`
   <p id="parrafoTotal">${compraTotal(arrayCarrito)}</p>
   <p id="parrafoEnvio">${ValidarEnvio(acumulador)}</p>
   `
   const aux=carts.join("") +parrafos
   document.getElementById('modal-body').innerHTML = aux;
-  modal.style.display = 'block';
-};
+  modal.style.display = 'block'; }; 
+
 
 // When the user clicks on <span> (x), close the modal
+
 span.onclick = function () {
   modal.style.display = 'none';
 };
 
 // When the user clicks anywhere outside of the modal, close it
+
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = 'none';
   }
 };
+
+// Practicando operadores Avanzados.
+
+//Desestructurando
+
+let [a, ,b , c ,d] = productos
+a = "budin nuevo"
+b = "budin limon"
+console.log(a)
+console.log(b)
+console.log(c)
+console.log(d)
+console.log(productos)
+
+// Nulish
+
+let budinBuscado = productos.find(budin => budin.nombre == "Venus") ?? "No tenemos ese budin en stock"
+console.log(budinBuscado)
+
+// Operador and
+
+let numero = 10 ;
+
+numero < 11 && console.log("es menor que 10")
 
 
 
