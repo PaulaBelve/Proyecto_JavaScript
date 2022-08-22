@@ -140,29 +140,37 @@ function agregarCarrito(budin) {
     </section>`;
   });
 
-  compraTotal(productosGuardados);
+  compraTotal(productosGuardados); productosTotal
 } */
 
 // CAMBIAR
 
 // Función total del pedido
 
-function compraTotal(productosTotal) {
+function compraTotal(...productosTotal) {
+
+  acumulador = 0 ;
  
   //recorrer productosTotal
+
+  acumulador = productosTotal.reduce((acumulador, item) => {
+    return acumulador + item.precio
+},0) ;
+
+console.log(acumulador)
  
-  productosTotal.forEach(productosCarrito => {
-    acumulador += productosCarrito.precio;
- //});
-  
-  
+/*  productosTotal.forEach(item => {
+    acumulador += item.precio; )} */
+ 
   //if acumulador = 0 o !=
 
- acumulador > 0 ? `El total de su compra es de: ${acumulador}` : `<p>No hay productos en el carrito</p>` }) 
-  
-  
+ acumulador > 0 ? `El total de su compra es de: ${acumulador}` :  `<p>No hay productos en el carrito</p>` 
+
 } ;
-//;
+
+ 
+
+ //;
 /*  if (acumulador == 0) {
     return `<p>No hay productos en el carrito</p>`;
   } else {
@@ -218,7 +226,7 @@ botonCarrito.onclick = function () {
   
   console.log(acumulador) 
   const parrafos=`
-  <p id="parrafoTotal">${compraTotal(arrayCarrito)}</p>
+  <p id="parrafoTotal">${compraTotal(...arrayCarrito)}</p>
   <p id="parrafoEnvio">${ValidarEnvio(acumulador)}</p>
   `
   const aux=carts.join("") +parrafos
