@@ -12,45 +12,8 @@ Swal.fire ({
   showConfirmButton: false ,
 })
 
-
-//SIMULADOR CARRITO
-
-// OBJETO BUDINES
-
-class budines {
-  constructor(id, nombre, sabor, precio, imagen) {
-    (this.id = id), (this.nombre = nombre), (this.sabor = sabor), (this.precio = precio), (this.imagen = imagen);
-  }
-
-  mostrarBudines() {
-    console.log(`El nombre es ${this.nombre}, su sabor ${this.sabor}, el precio es de ${this.precio}, la id es ${this.id}`);
-  }
-}
-
-const budin1 = new budines(1, 'Venus', 'Cacao y banana', 1000, 'img/recchoco.png');
-
-const budin2 = new budines(2, 'Gea', 'Coco', 1200, 'img/Reccoco.png');
-
-const budin3 = new budines(3, 'Poseidon', 'Frutos rojos', 1250, 'img/RecFr.png');
-
-const budin4 = new budines(4, 'Apollo', 'Naranja', 900, 'img/RecNar.png');
-
-// Objeto carrito de compras
-
-class carrito {
-  constructor(id, cantidad) {
-    (this.id = id), (this.cantidad = cantidad);
-  }
-}
-
-// Array de budines y carrito
-
-let productos = [];
-//console.log(...productos)
-
-let arrayCarrito = [];
-
 //Elementos DOM
+
 let botonCarrito = document.getElementById('botonCarrito');
 let modalBody = document.getElementsByClassName('modal-content');
 let botonFinalizarCompra = document.getElementById('botonFinalizarCompra');
@@ -67,6 +30,8 @@ let span = document.getElementsByClassName('close')[0];
 
 // Array productos que se imprima en el local Storage.
 
+/*function productosStorage () {
+
 if (localStorage.getItem('productos')) {
   productos = JSON.parse(localStorage.getItem('productos'));
   console.log(productos);
@@ -74,9 +39,11 @@ if (localStorage.getItem('productos')) {
   console.log(`primera vez que se cargan los productos`);
   productos.push(budin1, budin2, budin3, budin4);
   localStorage.setItem('productos', JSON.stringify(productos));
-}
+} } */
 
 // Array del carrito que se imprima en el local Storage.
+
+function carritoStorage () {
 
 if (localStorage.getItem('Carrito')) {
   arrayCarrito = JSON.parse(localStorage.getItem('Carrito'));
@@ -85,11 +52,12 @@ if (localStorage.getItem('Carrito')) {
   console.log(`inicia desde 0`);
   localStorage.setItem('Carrito', []);
   console.log(arrayCarrito);
-}
+} }
 
-// Pasando html a js
+// DOM CARDS PRODUCTOS
 
 function mostrarProductos() {
+  
   divBudines.classList.add('divBudines');
 
   productos.forEach(budin => {
@@ -109,7 +77,7 @@ function mostrarProductos() {
                           <h2 class="boxBudines__title">${budin.nombre}</h2>
                           <h3 class="boxBudines__subtitle">${budin.sabor}</h3>
 
-                         <p class="boxBudines__precio"> Precio: "$${budin.precio}" </p>
+                         <p class="boxBudines__precio"> Precio: $${budin.precio}</p>
                          
                          <button id="btnComprar${budin.id}" class="btn btn-outline-secondary">Comprar</button>
 
@@ -127,13 +95,12 @@ function mostrarProductos() {
   });
 }
 
-// Función mostrarProductos
 
-mostrarProductos();
 
 // Función que agregue la cantidad elegida particularmente del producto que se esta eligiendo
 
 function agregarCarrito(budin) {
+  
   console.log(`El budin ${budin.nombre}, de ${budin.sabor}, se agrego correctamente. N° de producto ${budin.id}`);
   arrayCarrito.push(budin);
   console.log(arrayCarrito);
@@ -149,32 +116,6 @@ function agregarCarrito(budin) {
 })
 }
 
-// Evento botonCarrito - llama a la función de productosAlcarrito
-
-// Función que vaya sumando la cantidad elegida (acumulador) id - cantidad * precio - PRIMERA PRUEBA
-
-/* function productosAlCarrito(productosGuardados) {
-  console.log(productosGuardados);
-  productosGuardados.forEach(productosCarrito => {
-    modalBody.innerHTML += ` <section class="cardBudines" id ="productosCarrito${productosCarrito.id}">
-    <article class=boxBudines>
-                          <picture class="boxBudines__img">
-                          <img src="${productosCarrito.imagen}" alt="">
-                           </picture>
-
-                          <div class="boxBudines__info">
-                          <h2 class="boxBudines__title">"${productosCarrito.nombre}"</h2>
-                          <p class="boxBudines__precio"> Precio: "$${productosCarrito.precio}" </p>       
-        </div>  
-        </article>   
-    </section>`;
-  });
-
-  compraTotal(productosGuardados); productosTotal
-} */
-
-// CAMBIAR
-
 // Función total del pedido
 
 function compraTotal(...productosTotal) {
@@ -187,19 +128,15 @@ function compraTotal(...productosTotal) {
     return acumulador + item.precio
 },0) ;
 
-console.log(acumulador)
- 
-/*  productosTotal.forEach(item => {
-    acumulador += item.precio; )} */
+console.log(acumulador) ;
  
   //if acumulador = 0 o !=
 
-  const result = acumulador >= 0 ? `El total de su compra es de: ${acumulador}` :  `No hay productos en el carrito`
+  const result = acumulador >= 0 ? `El total de su compra es de: $${acumulador}` :  `No hay productos en el carrito` ;
 
   return result
  
 } ;
-
 
 // Función que calcule el envio - envio sin costo - $200 de envio - (IF - ELSE)
 
@@ -213,9 +150,9 @@ function ValidarEnvio(acu) {
 
  // Invocar función donde se agregan los productos al carrito
 
- // When the user clicks on the button, open the modal
+ function productosModal () {
 
-function productosModal () {
+  // When the user clicks on the button, open the modal
 
 botonCarrito.onclick = function () {
 
@@ -229,18 +166,18 @@ botonCarrito.onclick = function () {
   
                           <div class="boxBudines__info">
                           <h2 class="boxBudines__title">"${item.nombre}"</h2>
-                          <p class="boxBudines__precio"> Precio: "$${item.precio}"</p> 
+                          <p class="boxBudines__precio"> Precio: "${item.precio}"</p> 
 
         </div>  
         </article>   
     </div>`
 
 )
-
-  console.log(acumulador) 
+ 
+// console.log(acumulador) 
 
   const parrafos=`
-  <p id="parrafoTotal">$${compraTotal(...arrayCarrito)}</p>
+  <p id="parrafoTotal">${compraTotal(...arrayCarrito)}</p>
   <p id="parrafoEnvio">${ValidarEnvio(acumulador)}</p>
   `
   const aux=carts.join("") +parrafos
@@ -248,8 +185,6 @@ botonCarrito.onclick = function () {
   modal.style.display = 'block'; }; 
 
   }
-
-productosModal ()
 
 // When the user clicks on <span> (x), close the modal
 
@@ -265,29 +200,24 @@ window.onclick = function (event) {
   }
 };
 
-// Practicando operadores Avanzados.
 
-//Desestructurando
+// Función productosStorage
 
-/* let [a, ,b , c ,d] = productos
-a = "budin nuevo"
-b = "budin limon"
-console.log(a)
-console.log(b)
-console.log(c)
-console.log(d)
-console.log(productos) */
+//productosStorage() ;
 
-// Nulish
+// Función mostrar productos 
 
-/* let budinBuscado = productos.find(budin => budin.nombre == "Venus") ?? "No tenemos ese budin en stock"
-console.log(budinBuscado) */
+mostrarProductos();
 
-// Operador and
+// Función carritoStorage
 
-/* let numero = 10 ;
+carritoStorage () ;
 
-numero < 11 && console.log("es menor que 10") */
+// Función productos modal 
+
+productosModal () ;
+
+
 
 
 

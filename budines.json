@@ -1,0 +1,32 @@
+ [
+
+{"id": 1 ,
+"nombre": "Venus",
+"sabor": "Cacao y banana",
+"precio": 1000,
+"imagen": "img/recchoco.png"
+},
+
+{"id": 2,
+"nombre": "Gea" ,
+"sabor": "coco",
+"precio": 1200,
+"imagen": "img/Reccoco.png"
+
+},
+
+{"id": 3,
+"nombre": "Poseidon" ,
+"sabor": "frutos rojos",
+"precio": 1200,
+"imagen": "img/RecFr.png"
+
+},
+
+{"id": 4,
+"nombre": "Apollo" ,
+"sabor": "naranja",
+"precio": 900 ,
+"imagen": "img/RecNar.png"
+
+}] 
