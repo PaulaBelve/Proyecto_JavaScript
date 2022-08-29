@@ -30,7 +30,7 @@ let span = document.getElementsByClassName('close')[0];
 
 // Array productos que se imprima en el local Storage.
 
-/*function productosStorage () {
+/* function productosStorage () {
 
 if (localStorage.getItem('productos')) {
   productos = JSON.parse(localStorage.getItem('productos'));
@@ -57,10 +57,13 @@ if (localStorage.getItem('Carrito')) {
 // DOM CARDS PRODUCTOS
 
 function mostrarProductos() {
+
+  fetchProductos () 
+  console.log(productos)
   
   divBudines.classList.add('divBudines');
 
-  productos.forEach(budin => {
+  if ( productos !== null ) {productos?.forEach(budin => {
     const section = document.createElement('section');
     section.className = 'cardBudines';
     section.setAttribute('id', budin.id);
@@ -92,7 +95,9 @@ function mostrarProductos() {
       e.preventDefault();
       agregarCarrito(budin);
     });
-  });
+  });} ;
+
+    
 }
 
 

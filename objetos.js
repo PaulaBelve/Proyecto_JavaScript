@@ -30,18 +30,53 @@ class budines {
   
 // Ruta relativa del HTML a JSON
 
+
 let productos = []
+
+function fetchProductos () {
+
 fetch("budines.json")
 .then(response => response.json())
 .then(data =>{
     console.log(data)
-    for(let budin of data){
+
+   for(let budin of data){
         let budinNuevo = new budines (budin.id, budin.nombre, budin.sabor, budin.precio, budin.imagen)
         productos.push(budinNuevo)
         console.log(budinNuevo)
-    }
-    
+    } 
+
 }) 
+
+}
+
+
+/* const getData = () => {
+
+    fetch ("budines.json")
+
+    .then((response) => {
+
+        return response.json ()
+
+    })
+
+    .then((json) => {
+
+        json.map((item) => {
+
+           productos.push(item)
+
+        })
+
+
+
+    })
+}
+
+getData() */
+    
+
 
   // Objeto carrito de compras
   
