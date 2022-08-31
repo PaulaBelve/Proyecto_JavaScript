@@ -58,12 +58,11 @@ if (localStorage.getItem('Carrito')) {
 
 function mostrarProductos() {
 
-  fetchProductos () 
-  console.log(productos)
-  
-  divBudines.classList.add('divBudines');
+   divBudines.classList.add('divBudines');
 
-  if ( productos !== null ) {productos?.forEach(budin => {
+  //if ( productos !== null ) {}
+
+  productos.forEach(budin => {
     const section = document.createElement('section');
     section.className = 'cardBudines';
     section.setAttribute('id', budin.id);
@@ -98,7 +97,7 @@ function mostrarProductos() {
   });} ;
 
     
-}
+
 
 
 

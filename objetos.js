@@ -27,65 +27,78 @@ class budines {
   let productos = [budin1,budin2,budin3,budin4];
   
   */
+
+ 
   
 // Ruta relativa del HTML a JSON
+//function fetchProductos () {}
 
+let productos = [];
 
-let productos = []
-
-function fetchProductos () {
-
-fetch("budines.json")
+/* fetch(`budines.json`)
 .then(response => response.json())
 .then(data =>{
-    console.log(data)
+  
 
    for(let budin of data){
-        let budinNuevo = new budines (budin.id, budin.nombre, budin.sabor, budin.precio, budin.imagen)
+        let budinNuevo = new budines (
+          budin.id, 
+          budin.nombre, 
+          budin.sabor, 
+          budin.precio, 
+          budin.imagen
+          
+          );
         productos.push(budinNuevo)
-        console.log(budinNuevo)
+        
     } 
+    
 
-}) 
+}) ;
+console.log(productos); */
+
+
+
+const cargarBudines = async () => {
+ 
+  const response = await fetch(`budines.json`)
+  const data = await response.json()
+
+  for(let budin of data){
+    let budinNuevo = new budines (
+      budin.id, 
+      budin.nombre, 
+      budin.sabor, 
+      budin.precio, 
+      budin.imagen
+      
+      );
+    productos.push(budinNuevo)
+    
+} 
 
 }
 
+//FUNCIÓN CARGAR BUDINES
 
-/* const getData = () => {
-
-    fetch ("budines.json")
-
-    .then((response) => {
-
-        return response.json ()
-
-    })
-
-    .then((json) => {
-
-        json.map((item) => {
-
-           productos.push(item)
-
-        })
+cargarBudines()
 
 
 
-    })
+ // Objeto carrito de compras
+  
+ class carrito {
+  constructor(id, cantidad) {
+    (this.id = id), (this.cantidad = cantidad);
+  }
 }
 
-getData() */
+// Array de budines y carrito
+
+let arrayCarrito = [];
+
+
+
     
 
 
-  // Objeto carrito de compras
-  
-  class carrito {
-    constructor(id, cantidad) {
-      (this.id = id), (this.cantidad = cantidad);
-    }
-  }
-
-  // Array de budines y carrito
-
-let arrayCarrito = [];
