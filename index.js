@@ -1,6 +1,6 @@
 // Bienvenida a la tienda
 
-Swal.fire ({
+/*Swal.fire ({
 
   title: `Bienvenido/a`,
   text: `Tienda oficial de delfos cocina` ,
@@ -10,7 +10,7 @@ Swal.fire ({
   timer: 3000,
   imageAlt:  `Custom image` ,
   showConfirmButton: false ,
-})
+}) */
 
 //Elementos DOM
 
@@ -27,6 +27,18 @@ let modal = document.getElementById('myModal');
 let btn = document.getElementById('myBtn');
 // Get the <span> element that closes the modal
 let span = document.getElementsByClassName('close')[0];
+
+ // Objeto carrito de compras
+  
+ class carrito {
+  constructor(id, cantidad) {
+    (this.id = id), (this.cantidad = cantidad);
+  }
+}
+
+// Array de budines y carrito
+
+let arrayCarrito = []; 
 
 // Array productos que se imprima en el local Storage.
 
@@ -58,10 +70,14 @@ if (localStorage.getItem('Carrito')) {
 
 function mostrarProductos() {
 
+  
+
    divBudines.classList.add('divBudines');
 
   //if ( productos !== null ) {}
 
+  //productos
+  
   productos.forEach(budin => {
     const section = document.createElement('section');
     section.className = 'cardBudines';
@@ -87,6 +103,7 @@ function mostrarProductos() {
                          </article>`;
 
     divBudines.append(section);
+    
 
     // BTN sumar productos al carrito - el click agrega el producto correspondiente al carrito
 
@@ -96,11 +113,6 @@ function mostrarProductos() {
     });
   });} ;
 
-    
-
-
-
-
 // Función que agregue la cantidad elegida particularmente del producto que se esta eligiendo
 
 function agregarCarrito(budin) {
@@ -109,6 +121,7 @@ function agregarCarrito(budin) {
   arrayCarrito.push(budin);
   console.log(arrayCarrito);
   localStorage.setItem('Carrito', JSON.stringify(arrayCarrito));
+  
 
   Swal.fire({
     title: "Su producto ha sido seleccionado",
@@ -209,17 +222,13 @@ window.onclick = function (event) {
 
 //productosStorage() ;
 
-// Función mostrar productos 
-
-mostrarProductos();
-
 // Función carritoStorage
 
-carritoStorage () ;
+carritoStorage() ;
 
 // Función productos modal 
 
-productosModal () ;
+productosModal() ;
 
 
 

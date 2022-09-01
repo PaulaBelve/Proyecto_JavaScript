@@ -35,36 +35,15 @@ class budines {
 
 let productos = [];
 
-/* fetch(`budines.json`)
-.then(response => response.json())
-.then(data =>{
-  
-
-   for(let budin of data){
-        let budinNuevo = new budines (
-          budin.id, 
-          budin.nombre, 
-          budin.sabor, 
-          budin.precio, 
-          budin.imagen
-          
-          );
-        productos.push(budinNuevo)
-        
-    } 
-    
-
-}) ;
-console.log(productos); */
-
-
 
 const cargarBudines = async () => {
  
-  const response = await fetch(`budines.json`)
-  const data = await response.json()
+  const response = await fetch(`./json/budines.json`)
+  productos = await response.json();
+  console.log (productos)
 
-  for(let budin of data){
+
+/*  for(let budin of data){
     let budinNuevo = new budines (
       budin.id, 
       budin.nombre, 
@@ -74,10 +53,14 @@ const cargarBudines = async () => {
       
       );
     productos.push(budinNuevo)
+    console.log (budinNuevo) */
+    // Función mostrar productos 
+
+mostrarProductos();
     
 } 
 
-}
+
 
 //FUNCIÓN CARGAR BUDINES
 
@@ -85,17 +68,6 @@ cargarBudines()
 
 
 
- // Objeto carrito de compras
-  
- class carrito {
-  constructor(id, cantidad) {
-    (this.id = id), (this.cantidad = cantidad);
-  }
-}
-
-// Array de budines y carrito
-
-let arrayCarrito = [];
 
 
 
