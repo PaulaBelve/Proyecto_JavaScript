@@ -14,6 +14,9 @@
 
 //Elementos DOM
 
+let botoneliminar = document.getElementById('icon-borrar')
+let verDescripcion = document.getElementById('verDescripción') ;
+let botonCarrito1 = document.getElementById('botonCarrito1');
 let botonCarrito = document.getElementById('botonCarrito');
 let modalBody = document.getElementsByClassName('modal-content');
 let botonFinalizarCompra = document.getElementById('botonFinalizarCompra');
@@ -40,18 +43,6 @@ let span = document.getElementsByClassName('close')[0];
 
 let arrayCarrito = []; 
 
-// Array productos que se imprima en el local Storage.
-
-/* function productosStorage () {
-
-if (localStorage.getItem('productos')) {
-  productos = JSON.parse(localStorage.getItem('productos'));
-  console.log(productos);
-} else {
-  console.log(`primera vez que se cargan los productos`);
-  productos.push(budin1, budin2, budin3, budin4);
-  localStorage.setItem('productos', JSON.stringify(productos));
-} } */
 
 // Array del carrito que se imprima en el local Storage.
 
@@ -70,13 +61,9 @@ if (localStorage.getItem('Carrito')) {
 
 function mostrarProductos() {
 
-  
+  divBudines.classList.add('divBudines');
 
-   divBudines.classList.add('divBudines');
-
-  //if ( productos !== null ) {}
-
-  //productos
+//productos
   
   productos.forEach(budin => {
     const section = document.createElement('section');
@@ -90,14 +77,21 @@ function mostrarProductos() {
                           <img src="${budin.imagen}" alt="">
                            </picture>
 
+                           <a class="nav_link"><img src="./img/2703085_bag_cart_ecommerce_shop_icon.png" class="estilosBotonCarrito1" id="botonCarrito1${budin.id}" alt=""/></a>
+
                           <div class="boxBudines__info">
 
                           <h2 class="boxBudines__title">${budin.nombre}</h2>
+                          
                           <h3 class="boxBudines__subtitle">${budin.sabor}</h3>
+                          
 
                          <p class="boxBudines__precio"> Precio: $${budin.precio}</p>
+
+                         <a class="descripción" id="verDescripción${budin.descripción}">Ver descripción</a>
                          
-                         <button id="btnComprar${budin.id}" class="btn btn-outline-secondary">Comprar</button>
+                         
+                         
 
                          </div>
                          </article>`;
@@ -107,11 +101,41 @@ function mostrarProductos() {
 
     // BTN sumar productos al carrito - el click agrega el producto correspondiente al carrito
 
-    document.getElementById(`btnComprar${budin.id}`).addEventListener('click', e => {
+    document.getElementById(`botonCarrito1${budin.id}`).addEventListener('click', e => {
       e.preventDefault();
+
+      
+      
       agregarCarrito(budin);
+
+      mostrarDescripcion(budin)
+
     });
-  });} ;
+  })
+
+  } ;
+
+  // CUANDO CLICKEO EL CARRITO DE LA FOTO, SE ME ABRE LA DESCRIPCIÓN EN EL MODAL EN VEZ DE EN EL VOTON DE VER DESCRIPCION
+
+  //Modal - mostrar descripción del producto
+
+  function mostrarDescripcion (budin) {
+
+    console.log(`El budin ${budin.nombre}, ${budin.descripción}, se agrego correctamente. N° de producto ${budin.id}`);
+
+    document.getElementById(`verDescripción${budin.descripción}`).addEventListener('click', e => {
+      e.preventDefault(); })
+
+      Swal.fire({
+      title: `Budin ${budin.nombre}`,
+      text: ` ${budin.descripción} `,
+      icon: "success",
+      timer: 2000,
+    //  showConfirmButton: false,
+      confirmButtonText:"OK",
+  })
+
+  } 
 
 // Función que agregue la cantidad elegida particularmente del producto que se esta eligiendo
 
@@ -183,7 +207,8 @@ botonCarrito.onclick = function () {
   
                           <div class="boxBudines__info">
                           <h2 class="boxBudines__title">"${item.nombre}"</h2>
-                          <p class="boxBudines__precio"> Precio: "${item.precio}"</p> 
+                          <p class="boxBudines__precio"> Precio:"${item.precio}"</p> 
+                         
 
         </div>  
         </article>   
@@ -193,15 +218,34 @@ botonCarrito.onclick = function () {
  
 // console.log(acumulador) 
 
-  const parrafos=`
+  const modalBody=`
   <p id="parrafoTotal">${compraTotal(...arrayCarrito)}</p>
   <p id="parrafoEnvio">${ValidarEnvio(acumulador)}</p>
+  
   `
-  const aux=carts.join("") +parrafos
+
+const aux=carts.join("") +modalBody
   document.getElementById('modal-body').innerHTML = aux;
   modal.style.display = 'block'; }; 
 
   }
+
+ /* function eliminarCarrito {
+
+  <a id="icon-borrar">${item.id}</a>
+
+    const eliminarCarrito= ` <a id="icon-borrar">${item.id}</a>`
+
+
+const eliminar=carts.join("") +eliminarCarrito
+document.getElementById('icon-borrar').innerHTML = eliminar; 
+
+
+  } */
+
+
+
+
 
 // When the user clicks on <span> (x), close the modal
 
@@ -217,10 +261,6 @@ window.onclick = function (event) {
   }
 };
 
-
-// Función productosStorage
-
-//productosStorage() ;
 
 // Función carritoStorage
 

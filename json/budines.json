@@ -6,29 +6,32 @@
 "nombre": "Venus",
 "sabor": "Cacao y banana",
 "precio": 1000,
-"imagen": "img/recchoco.png"
+"imagen": "img/recchoco.png",
+"descripción": "La combinación de cacao y banana, nos ofrece dulzura, intensidad y armonia."
 },
 
 {"id": 2,
 "nombre": "Gea" ,
-"sabor": "coco",
+"sabor": "Coco",
 "precio": 1200,
-"imagen": "img/Reccoco.png"
+"imagen": "img/Reccoco.png",
+"descripción": " El coco nos ofrece la energía de la tierra, sanación, renovación y equilibrio."
 
 },
 
 {"id": 3,
 "nombre": "Poseidon" ,
-"sabor": "frutos rojos",
-"precio": 1200,
-"imagen": "img/RecFr.png"
+"sabor": "Frutos rojos",
+"precio": 1500,
+"imagen": "img/RecFr.png",
+"descripción": "La combinación vainilla y frutos rojos nos ofrece la energía del agua, calma y frescura."
 
 },
 
 {"id": 4,
 "nombre": "Apollo" ,
-"sabor": "naranja",
+"sabor": "Naranja",
 "precio": 900 ,
-"imagen": "img/RecNar.png"
-
+"imagen": "img/RecNar.png",
+"descripción": "El sabor citrico nos ofrece la energia del fuego, intensidad y vitalidad."
 }] 

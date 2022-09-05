@@ -1,13 +1,14 @@
 // OBJETO BUDINES
 
 class budines {
-    constructor(id, nombre, sabor, precio, imagen) {
+    constructor(id, nombre, sabor, precio, imagen, descripción) {
       
       this.id = id, 
       this.nombre = nombre, 
       this.sabor = sabor, 
       this.precio = precio, 
-      this.imagen = imagen
+      this.imagen = imagen,
+      this.descripción = descripción
         
     }  
   
