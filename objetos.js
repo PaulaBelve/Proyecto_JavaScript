@@ -36,7 +36,6 @@ class budines {
 
 let productos = [];
 
-
 const cargarBudines = async () => {
  
   const response = await fetch(`./json/budines.json`)
@@ -60,8 +59,6 @@ const cargarBudines = async () => {
 mostrarProductos();
     
 } 
-
-
 
 //FUNCIÓN CARGAR BUDINES
 

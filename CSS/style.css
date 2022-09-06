@@ -175,15 +175,7 @@ h1 {
 
 
         }
-     /*   .btn-outline-secondary {
-
-            font-size: 1.5em;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            color: cornflowerblue;
-            margin: 2rem 5rem 2rem 5rem;
-            
-           
-         } */
+    
 
          .modal {
             display: none; /* Hidden by default */
@@ -229,21 +221,42 @@ h1 {
             padding: 2px 16px;
           } 
 
-          #icon-borrar {
+          .icon-borrar {
 
             height: 25px;
             width: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
           
           /* Modal Footer */
           .modal-footer {
             padding: 3px 16px;
-            background-color: cornflowerblue;
+            
+            background-color: #6495ed;
             color: white;
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             font-size: 1.5em;
             text-align: center;
+            height: 5rem;
           }
+
+        .modal-footer #botonFinalizarCompra {
+
+            font-size: 1.2em;
+            padding: 1rem;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: white;
+            margin: 2rem 0 2rem 0 ;
+            border: solid 2px white;
+            border-radius: 10%;
+            cursor: pointer;
+            
+
+            
+           
+         } 
 
 
           #parrafoTotal {

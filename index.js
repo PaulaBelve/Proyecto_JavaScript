@@ -1,16 +1,3 @@
-// Bienvenida a la tienda
-
-/*Swal.fire ({
-
-  title: `Bienvenido/a`,
-  text: `Tienda oficial de delfos cocina` ,
-  imageUrl: `img/delfos sombra.png`,
-  imageWidth: 300,
-  imageHeigth: 100,
-  timer: 3000,
-  imageAlt:  `Custom image` ,
-  showConfirmButton: false ,
-}) */
 
 //Elementos DOM
 
@@ -77,7 +64,7 @@ function mostrarProductos() {
                           <img src="${budin.imagen}" alt="">
                            </picture>
 
-                           <a class="nav_link"><img src="./img/2703085_bag_cart_ecommerce_shop_icon.png" class="estilosBotonCarrito1" id="botonCarrito1${budin.id}" alt=""/></a>
+                          <a class="nav_link"><img src="./img/2703085_bag_cart_ecommerce_shop_icon.png" class="estilosBotonCarrito1" id="botonCarrito1${budin.id}" alt=""/></a>
 
                           <div class="boxBudines__info">
 
@@ -105,37 +92,42 @@ function mostrarProductos() {
       e.preventDefault();
 
       
-      
       agregarCarrito(budin);
 
-      mostrarDescripcion(budin)
+      
 
     });
   })
 
   } ;
 
-  // CUANDO CLICKEO EL CARRITO DE LA FOTO, SE ME ABRE LA DESCRIPCIÓN EN EL MODAL EN VEZ DE EN EL VOTON DE VER DESCRIPCION
+  // RE VER EL ORDEN - COMO ORDENO ESTA FUNCIÓN
 
   //Modal - mostrar descripción del producto
 
-  function mostrarDescripcion (budin) {
-
-    console.log(`El budin ${budin.nombre}, ${budin.descripción}, se agrego correctamente. N° de producto ${budin.id}`);
+/* function mostrarDescripcion (budin) {
 
     document.getElementById(`verDescripción${budin.descripción}`).addEventListener('click', e => {
       e.preventDefault(); })
 
       Swal.fire({
       title: `Budin ${budin.nombre}`,
-      text: ` ${budin.descripción} `,
-      icon: "success",
-      timer: 2000,
-    //  showConfirmButton: false,
-      confirmButtonText:"OK",
+      text: `${budin.descripción}, ingredientes:${budin.ingredientes} `,
+      imageUrl: `{budin.img}`,
+      imageWidth: 100,
+      imageHeigth: 100,
+  //  showConfirmButton: false,
+      confirmButtonText:"agregar al carrito",
   })
 
   } 
+
+  // BOTON DESCRIPCIÓN
+
+  
+  mostrarDescripcion() */
+
+ 
 
 // Función que agregue la cantidad elegida particularmente del producto que se esta eligiendo
 
@@ -152,7 +144,7 @@ function agregarCarrito(budin) {
     text: `El budin ${budin.nombre} ha sido agregado al carrito`,
     icon: "success",
     timer: 2000,
-  //  showConfirmButton: false,
+  //showConfirmButton: false,
     confirmButtonText:"OK",
 })
 }
@@ -189,11 +181,28 @@ function ValidarEnvio(acu) {
 
   } 
 
+  function eliminarCarrito () {
+
+    const listaBorrada = []
+    arrayCarrito.map((item) => {
+
+      document.getElementById(`icon-borrar-${item.id}`).addEventListener('click', e => {
+        e.preventDefault()
+        
+        console.log(item); })
+  
+     // document.getElementById(`icon-borrar-${item.id}`)?.onclick = () => {console.log(item.id);}
+        
+     productosModal() ;
+    
+    
+    }) }
+
  // Invocar función donde se agregan los productos al carrito
 
  function productosModal () {
 
-  // When the user clicks on the button, open the modal
+  // function para abrir el modal
 
 botonCarrito.onclick = function () {
 
@@ -208,13 +217,15 @@ botonCarrito.onclick = function () {
                           <div class="boxBudines__info">
                           <h2 class="boxBudines__title">"${item.nombre}"</h2>
                           <p class="boxBudines__precio"> Precio:"${item.precio}"</p> 
-                         
+                          <a id="icon-borrar-${item.id}"><img class="icon-borrar" src="./img/delete.png"/></a>
 
         </div>  
         </article>   
     </div>`
 
 )
+
+
  
 // console.log(acumulador) 
 
@@ -228,20 +239,56 @@ const aux=carts.join("") +modalBody
   document.getElementById('modal-body').innerHTML = aux;
   modal.style.display = 'block'; }; 
 
-  }
+  eliminarCarrito()
 
- /* function eliminarCarrito {
+  
 
-  <a id="icon-borrar">${item.id}</a>
+}
 
-    const eliminarCarrito= ` <a id="icon-borrar">${item.id}</a>`
+/* function eliminarCarrito () {
+
+  const listaBorrada = []
+  arrayCarrito.map((item) => {
+
+    document.getElementById(`icon-borrar-${item.id}`).addEventListener('click', e => {
+      e.preventDefault()
+      
+      console.log(item);
+  })
+  
+  }) } */
 
 
-const eliminar=carts.join("") +eliminarCarrito
-document.getElementById('icon-borrar').innerHTML = eliminar; 
 
+ 
+  function finalizarCompra(){
+    //Estamos finalizando la compra, por lo que debemos borrar todos los elementos del array y removerlo del localStorage
+    arrayCarrito = []
+    localStorage.removeItem('Carrito')
+    //Mostramos total
+    console.log(`El total de su compra es ${acumulador}`)
+    //Volvemos a cargar el modal con el array vacío por lo que quedará sin nada
+    productosModal(arrayCarrito)
 
-  } */
+  Swal.fire ({
+  title: `Tu compra ha sido realizada!!` ,
+  text: `El total de su compra es ${acumulador}. En breves le estaremos mandando un mail con el detalle de su compra` ,
+  footer: `Gracias por elegirnos!`,
+  imageUrl: `img/delfos sombra.png`,
+  imageWidth: 200,
+  imageHeigth: 100,
+  imageAlt:  `Custom image` ,
+  showConfirmButton: true,
+}) 
+
+}
+//Eventos 
+botonCarrito.addEventListener('click', () => {
+    productosModal(arrayCarrito)
+})
+botonFinalizarCompra.addEventListener('click',()=>{
+    finalizarCompra()
+})
 
 
 
@@ -268,7 +315,7 @@ carritoStorage() ;
 
 // Función productos modal 
 
-productosModal() ;
+//productosModal() ;
 
 
 

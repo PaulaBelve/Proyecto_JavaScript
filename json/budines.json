@@ -7,7 +7,8 @@
 "sabor": "Cacao y banana",
 "precio": 1000,
 "imagen": "img/recchoco.png",
-"descripción": "La combinación de cacao y banana, nos ofrece dulzura, intensidad y armonia."
+"descripción": "La combinación de cacao y banana, nos ofrece dulzura, intensidad y armonia.",
+"ingredientes": "Harina de avena, azucar mascabo, huevo, banana, cacao y manzana."
 },
 
 {"id": 2,
@@ -15,7 +16,8 @@
 "sabor": "Coco",
 "precio": 1200,
 "imagen": "img/Reccoco.png",
-"descripción": " El coco nos ofrece la energía de la tierra, sanación, renovación y equilibrio."
+"descripción": " El coco nos ofrece la energía de la tierra, sanación, renovación y equilibrio.",
+"ingredientes": "Harina de avena, azucar mascabo, escencia de vainilla y coco."
 
 },
 
@@ -24,7 +26,8 @@
 "sabor": "Frutos rojos",
 "precio": 1500,
 "imagen": "img/RecFr.png",
-"descripción": "La combinación vainilla y frutos rojos nos ofrece la energía del agua, calma y frescura."
+"descripción": "La combinación vainilla y frutos rojos nos ofrece la energía del agua, calma y frescura.",
+"ingredientes": "Harina de arroz, azucar mascabo, escencia de vainilla y frutos rojos."
 
 },
 
@@ -33,5 +36,6 @@
 "sabor": "Naranja",
 "precio": 900 ,
 "imagen": "img/RecNar.png",
-"descripción": "El sabor citrico nos ofrece la energia del fuego, intensidad y vitalidad."
+"descripción": "El sabor citrico nos ofrece la energia del fuego, intensidad y vitalidad.",
+"ingredientes": "Harina de arroz, azucar mascabo, coco, ralladura y jugo de naranja."
 }] 
