@@ -1,8 +1,8 @@
 
 //Elementos DOM
 
-let botoneliminar = document.getElementById('icon-borrar')
-let verDescripcion = document.getElementById('verDescripción');
+
+// let verDescripcion = document.getElementById('verDescripción');
 let botonCarrito1 = document.getElementById('botonCarrito1');
 let botonCarrito = document.getElementById('botonCarrito');
 let modalBody = document.getElementsByClassName('modal-content');
@@ -89,15 +89,18 @@ function mostrarProductos() {
     document.getElementById(`botonCarrito1${budin.id}`).addEventListener('click', e => {
       e.preventDefault();
 
-
       agregarCarrito(budin);
 
-  // Recorrer con un map el array de productos para que muestre la descripción en un modal
-      productos.map(budin=>mostrarDescripcion(budin))
-
-
-
     });
+
+    // Recorrer con un map el array de productos para que muestre la descripción en un modal
+
+    document.getElementById(`verDescripción${budin.descripción}`).addEventListener('click', e => {
+      e.preventDefault();
+      mostrarDescripcion(budin)
+
+    })
+
   })
 
 };
@@ -128,25 +131,21 @@ function agregarCarrito(budin) {
 
 function mostrarDescripcion(budin) {
 
- /* document.getElementById(`verDescripción${budin.descripción}`).addEventListener('click', e => {
-    e.preventDefault(); console.log(budin)
-  }) */
 
-  document.getElementById(`verDescripción${budin.descripción}`).onclick = () => {
-    console.log(budin)
-  }
+  console.log(budin)
+  Swal.fire({
+    title: `Budin ${budin.nombre}`,
+    text: `${budin.descripción}, ingredientes:${budin.ingredientes} `,
+    imageUrl: `${budin.imagen}`,
+    imageWidth: 100,
+    imageHeigth: 100,
+    //  showConfirmButton: false,
+    confirmButtonText: "agregar al carrito",
+  }).then((result) => {
+    if (result.isConfirmed) { agregarCarrito(budin) }
+  })
+
 }
-
-  /*   Swal.fire({
-     title: `Budin ${budin.nombre}`,
-     text: `${budin.descripción}, ingredientes:${budin.ingredientes} `,
-     imageUrl: `{budin.img}`,
-     imageWidth: 100,
-     imageHeigth: 100,
- //  showConfirmButton: false,
-     confirmButtonText:"agregar al carrito",
- }) */
-
 
 
 // Función total del pedido
@@ -183,14 +182,42 @@ function ValidarEnvio(acu) {
 
 function eliminarCarrito(item) {
 
-  /*document.getElementById(`icon-borrar-${item.id}`).addEventListener('click', e => {
-      e.preventDefault()
-      console.log(item);
-    })*/
 
   document.getElementById(`icon-borrar-${item.id}`).onclick = () => {
-    console.log(item)
-  }
+    console.log('el producto ${item.id} ha sido eliminado')
+
+    //Eliminar producto del DOM
+    let productoEliminado = document.getElementById(`productosCarrito${item.id}`);
+    console.log(productoEliminado)
+    productoEliminado.remove()
+
+    //Eliminar producto del Array de compras
+    arrayCarrito.splice(item, 1)
+    console.log(arrayCarrito)
+    localStorage.setItem("Carrito", JSON.stringify(arrayCarrito))
+    // Volver a imprimir
+    productosModal(arrayCarrito)
+    //Que el total se refleje en el resumen de compra
+
+
+
+
+/* Swal.fire({
+    title: 'Desea eliminar ${item.nombre} del carrito?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Borrado',
+        'El producto ${item.nombre} ha sido borrado!',
+        'success'
+      )
+    }
+  })*/ }
 }
 
 // Invocar función donde se agregan los productos al Modal
@@ -252,6 +279,14 @@ function finalizarCompra() {
 
   //Confirmación de la compra, eliminar elementos del array y removerlos del localStorage
 
+  // lISTA ACTUALIZADA CON LOS PRODUCTOS ELIMINADOS
+
+  let actCarrito = JSON.parse(localStorage.getItem('Carrito'))
+
+  acumulador = actCarrito.reduce((acumulador, item) => {
+    return acumulador + item.precio
+  }, 0);
+
   arrayCarrito = []
   localStorage.removeItem('Carrito')
 
@@ -271,6 +306,8 @@ function finalizarCompra() {
     imageAlt: `Custom image`,
     showConfirmButton: true,
   })
+
+
 
 }
 
