@@ -56,7 +56,8 @@ const cargarBudines = async () => {
     console.log (budinNuevo) */
     // Función mostrar productos 
 
-mostrarProductos();
+
+timerProductos();
     
 } 
 

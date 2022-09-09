@@ -66,6 +66,17 @@ h1 {
     
 }
 
+.estilosLoading {
+
+  text-align: center;
+  margin-top: 2rem;
+  color: green;
+  font-size: medium;
+  
+}
+
+
+
 .estilosBotonCarrito {
 
     height: 30px;
@@ -75,6 +86,8 @@ h1 {
     cursor: pointer;
   
 }
+
+
 
 /* Card budines */
 

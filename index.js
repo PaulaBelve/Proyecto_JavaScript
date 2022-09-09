@@ -45,6 +45,21 @@ function carritoStorage() {
   }
 }
 
+// FUNCTION LOADING
+
+function timerProductos () {
+
+  let loadingProductos = document.getElementById('loadingProductos')
+
+  const cargador = setTimeout(()=>{
+
+    loadingProductos.remove()
+    //carga de Cards
+    mostrarProductos();
+
+},1500)
+}
+
 // DOM CARDS PRODUCTOS
 
 function mostrarProductos() {
@@ -164,7 +179,7 @@ function compraTotal(...productosTotal) {
 
   //if acumulador = 0 o !=
 
-  const result = acumulador >= 0 ? `El total de su compra es de: $${acumulador}` : `No hay productos en el carrito`;
+  const result = acumulador > 0 ? `El total de su compra es de: $${acumulador}` : `No hay productos en el carrito`;
 
   return result
 
@@ -259,19 +274,6 @@ function productosModal() {
     arrayCarrito.map(item => eliminarCarrito(item))
   };
 }
-
-/* function eliminarCarrito () {
-
-  const listaBorrada = []
-  arrayCarrito.map((item) => {
-
-    document.getElementById(`icon-borrar-${item.id}`).addEventListener('click', e => {
-      e.preventDefault()
-      
-      console.log(item);
-  })
-  
-  }) } */
 
 // FUNCION BOTON CONFIRMAR COMPRA
 
