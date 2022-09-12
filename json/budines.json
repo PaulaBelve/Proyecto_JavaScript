@@ -5,10 +5,10 @@
 {"id": 1 ,
 "nombre": "Venus",
 "sabor": "Cacao y banana",
-"precio": 1000,
+"precio": 1600,
 "imagen": "img/recchoco.png",
 "descripción": "La combinación de cacao y banana, nos ofrece dulzura, intensidad y armonia.",
-"ingredientes": "Harina de avena, azucar mascabo, huevo, banana, cacao y manzana."
+"ingredientes": "Harina de avena, azúcar mascabo, huevo, banana, cacao y manzana."
 },
 
 {"id": 2,
@@ -17,7 +17,7 @@
 "precio": 1200,
 "imagen": "img/Reccoco.png",
 "descripción": " El coco nos ofrece la energía de la tierra, sanación, renovación y equilibrio.",
-"ingredientes": "Harina de avena, azucar mascabo, escencia de vainilla y coco."
+"ingredientes": "Harina de avena, azúcar mascabo, escencia de vainilla y coco."
 
 },
 
@@ -27,7 +27,7 @@
 "precio": 1500,
 "imagen": "img/RecFr.png",
 "descripción": "La combinación vainilla y frutos rojos nos ofrece la energía del agua, calma y frescura.",
-"ingredientes": "Harina de arroz, azucar mascabo, escencia de vainilla y frutos rojos."
+"ingredientes": "Harina de arroz, azúcar mascabo, escencia de vainilla y frutos rojos."
 
 },
 
@@ -37,5 +37,5 @@
 "precio": 900 ,
 "imagen": "img/RecNar.png",
 "descripción": "El sabor citrico nos ofrece la energia del fuego, intensidad y vitalidad.",
-"ingredientes": "Harina de arroz, azucar mascabo, coco, ralladura y jugo de naranja."
+"ingredientes": "Harina de arroz, azúcar mascabo, coco, ralladura y jugo de naranja."
 }] 
