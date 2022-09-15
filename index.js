@@ -1,8 +1,8 @@
 
+// CARRITO DE COMPRAS DELFOS-COCINA
+
 //Elementos DOM
 
-
-// let verDescripcion = document.getElementById('verDescripción');
 let botonCarrito1 = document.getElementById('botonCarrito1');
 let botonCarrito = document.getElementById('botonCarrito');
 let modalBody = document.getElementsByClassName('modal-content');
@@ -26,9 +26,10 @@ class carrito {
   }
 }
 
-// Array de budines y carrito
+// Array del carrito carrito
 
 let arrayCarrito = [];
+console.log(arrayCarrito)
 
 
 // Array del carrito que se imprima en el local Storage.
@@ -47,17 +48,17 @@ function carritoStorage() {
 
 // FUNCTION LOADING
 
-function timerProductos () {
+function timerProductos() {
 
   let loadingProductos = document.getElementById('loadingProductos')
 
-  const cargador = setTimeout(()=>{
+  const cargador = setTimeout(() => {
 
     loadingProductos.remove()
     //carga de Cards
     mostrarProductos();
 
-},1500)
+  }, 1500)
 }
 
 // DOM CARDS PRODUCTOS
@@ -66,7 +67,7 @@ function mostrarProductos() {
 
   divBudines.classList.add('divBudines');
 
-  //productos
+  // Mostrar los productos
 
   productos.forEach(budin => {
     const section = document.createElement('section');
@@ -108,7 +109,7 @@ function mostrarProductos() {
 
     });
 
-    // Recorrer con un map el array de productos para que muestre la descripción en un modal
+    // Evento - boton que muestre la descripción del producto
 
     document.getElementById(`verDescripción${budin.descripción}`).addEventListener('click', e => {
       e.preventDefault();
@@ -120,7 +121,7 @@ function mostrarProductos() {
 
 };
 
-// Función que agregue la cantidad elegida particularmente del producto que se esta eligiendo
+// Función que agregue la cantidad elegida particularmente del producto que se esta eligiendo y lo agregue al LocalStorage
 
 function agregarCarrito(budin) {
 
@@ -147,16 +148,16 @@ function mostrarDescripcion(budin) {
   console.log(budin)
   Swal.fire({
     title: `Budin ${budin.nombre}`,
-  //  text: `${budin.descripción} INGREDIENTES: ${budin.ingredientes} `,
-  html: `<div class="descripcion">"${budin.descripción}"</div> <div class="ingredientes"> INGREDIENTES: ${budin.ingredientes}</div> `,
+    html: `<div class="descripcion">"${budin.descripción}"</div> <div class="ingredientes"> INGREDIENTES: ${budin.ingredientes}</div> `,
     imageUrl: `${budin.imagen}`,
     imageWidth: 300,
     imageHeigth: 300,
-    imageAlt:  `Custom image`,
+    imageAlt: `Custom image`,
     width: `40rem`,
-    customClass: {title:`tituloDescripcion`,
-                   imageUrl:`imagenDescripcion` },
-    //  showConfirmButton: false,
+    customClass: {
+      title: `tituloDescripcion`,
+      imageUrl: `imagenDescripcion`
+    },
     showCloseButton: true,
     confirmButtonText: "Agregar al carrito",
   }).then((result) => {
@@ -171,7 +172,7 @@ function compraTotal(...productosTotal) {
 
   acumulador = 0;
 
-  //recorrer productosTotal
+  //Recorrer productosTotal
 
   acumulador = productosTotal.reduce((acumulador, item) => {
     return acumulador + item.precio
@@ -179,7 +180,7 @@ function compraTotal(...productosTotal) {
 
   console.log(acumulador);
 
-  //if acumulador = 0 o !=
+  // Operador ternario para que muestre el total de la compra / si es mayor a 0 que muestre el total y sino que avise que no hay nada en el carrito
 
   const result = acumulador > 0 ? `El total de su compra es de: $${acumulador}` : `No hay productos en el carrito`;
 
@@ -189,12 +190,12 @@ function compraTotal(...productosTotal) {
 
 // Function eliminar del carrito
 
-function eliminarCarrito(item) {
+function eliminarCarrito(item, indice) {
 
-    document.getElementById(`icon-borrar-${item.id}`).onclick = () => {
+  document.getElementById(`icon-borrar-${item.id}`).onclick = () => {
     console.log('el producto ${item.id} ha sido eliminado')
-
-    //Eliminar producto del DOM
+   
+   //Eliminar producto del DOM
     let productoEliminado = document.getElementById(`productosCarrito${item.id}`);
     console.log(productoEliminado)
     productoEliminado.remove()
@@ -205,9 +206,11 @@ function eliminarCarrito(item) {
     localStorage.setItem("Carrito", JSON.stringify(arrayCarrito))
     // Volver a imprimir los productos
     productosModal(arrayCarrito)
-   
- }
-}
+    // Actualización del total en el modal
+    document.getElementById("parrafoTotal").innerHTML = compraTotal(...arrayCarrito)
+
+  }
+} 
 
 // Invocar función donde se agregan los productos al Modal
 
@@ -237,61 +240,67 @@ function productosModal() {
     )
 
     const modalBody = `
-  <p id="parrafoTotal">${compraTotal(...arrayCarrito)}</p>
- 
-  
-  `
-
-    const aux = carts.join("") + modalBody
+  <p id="parrafoTotal">${compraTotal(...arrayCarrito)}</p>`
+    
+  const aux = carts.join("") + modalBody
     document.getElementById('modal-body').innerHTML = aux;
     modal.style.display = 'block';
     arrayCarrito.map(item => eliminarCarrito(item))
   };
-}
+};
 
 // FUNCION BOTON CONFIRMAR COMPRA
 
 function finalizarCompra() {
 
-  //Confirmación de la compra, eliminar elementos del array y removerlos del localStorage
-
   // LISTA ACTUALIZADA CON LOS PRODUCTOS ELIMINADOS
 
-  let actCarrito = JSON.parse(localStorage.getItem('Carrito'))
+  let actCarrito = []
+  if (JSON.parse(localStorage.getItem('Carrito')) != null) actCarrito = (JSON.parse(localStorage.getItem('Carrito'))) 
 
-   acumulador = actCarrito.reduce((acumulador, item) => {
+  console.log(actCarrito)
+  acumulador = actCarrito?.reduce((acumulador, item) => {
     return acumulador + item.precio
-  }, 0);
+  }, 0); 
+
+ //Confirmación de la compra, eliminar elementos del array y removerlos del localStorage
 
   arrayCarrito = []
   localStorage.removeItem('Carrito')
 
   //Mostrar el total
-  
+
   console.log(`El total de su compra es ${acumulador}`)
 
   //Volver a cargar el array carrito
- 
+
   productosModal(arrayCarrito)
 
   //Que el total se refleje en el resumen de compra - se imprime en el modal
 
-  Swal.fire({
-    title: `Tu compra ha sido realizada!`,
-    html: `<div class="totalResumen">El total de su compra es $${acumulador}</div> 
+  if (acumulador === 0) {
+    Swal.fire({
+      title: `NO HAY PRODUCTOS EN EL CARRITO`,
+
+    })
+  }
+  else {
+    Swal.fire({
+      title: `Tu compra ha sido realizada!`,
+      html: `<div class="totalResumen">El total de su compra es $${acumulador}</div> 
     <p class="parrafoMail"> En breves le estaremos mandando un mail con el detalle de su compra.</p>`,
-    footer: `Gracias por elegirnos!`,
-    customClass: {footer:`footerModal`,
-                  title:`tituloModal` },
-    imageUrl: `img/delfos sombra.png`,
-    imageWidth: 250,
-    imageHeigth: 250,
-    imageAlt: `Custom image`,
-    showConfirmButton: true,
-  })
-
-
-
+      footer: `Gracias por elegirnos!`,
+      customClass: {
+        footer: `footerModal`,
+        title: `tituloModal`
+      },
+      imageUrl: `img/delfos sombra.png`,
+      imageWidth: 250,
+      imageHeigth: 250,
+      imageAlt: `Custom image`,
+      showConfirmButton: true,
+    })
+  }
 }
 
 // FUNCTION - CLICK BTN CONFIRMAR COMPRA Y VACIAR EL CARRITO 
@@ -310,6 +319,7 @@ function confirmarCompra() {
 
 confirmarCompra();
 
+// EVENTOS DEL MODAL
 
 // When the user clicks on <span> (x), close the modal
 
@@ -334,6 +344,12 @@ carritoStorage();
 // Función productos modal 
 
 productosModal();
+
+
+
+
+
+
 
 
 
