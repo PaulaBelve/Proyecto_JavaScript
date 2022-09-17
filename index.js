@@ -124,15 +124,14 @@ function agregarCarrito(budin) {
 function mostrarDescripcion(budin) {
 	Swal.fire({
 		title: `Budin ${budin.nombre}`,
-		//  text: `${budin.descripción} INGREDIENTES: ${budin.ingredientes} `,
+		
 		html: `<div class="descripcion">"${budin.descripción}"</div> <div class="ingredientes"> INGREDIENTES: ${budin.ingredientes}</div> `,
 		imageUrl: `${budin.imagen}`,
 		imageWidth: 300,
-		imageHeight: 300,
 		imageAlt: `Custom image`,
 		width: `40rem`,
 		customClass: { title: `tituloDescripcion`, imageUrl: `imagenDescripcion` },
-		//  showConfirmButton: false,
+		
 		showCloseButton: true,
 		confirmButtonText: 'Agregar al carrito',
 	}).then((result) => {
@@ -231,8 +230,6 @@ function finalizarCompra() {
  
   productosModal(arrayCarrito)
 
-  //Que el total se refleje en el resumen de compra - se imprime en el modal
-
  //Que el total se refleje en el resumen de compra - se imprime en el modal
 
  if (acumulador === 0) {
@@ -259,8 +256,6 @@ else {
   })
 }
 
-
-
 }
 
 // FUNCTION - CLICK BTN CONFIRMAR COMPRA Y VACIAR EL CARRITO
@@ -277,6 +272,8 @@ function confirmarCompra() {
 //Confirmar compra
 
 confirmarCompra()
+
+// EVENTOS MODAL
 
 // When the user clicks on <span> (x), close the modal
 
