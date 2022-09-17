@@ -283,11 +283,17 @@ h1 {
           cursor: pointer;
           
         }
-
+        .containerCarrito{
+          display: flex;
+          justify-content: center;
+          margin-top: 2.8rem;
+        }
         .estilosBotonCarrito1 {
-
+          margin: auto;
           height: 25px;
           width: 25px;
+          display: flex;
+          justify-content: center;
           background: lavender;
           cursor: pointer;
           position: absolute;
@@ -296,8 +302,6 @@ h1 {
           justify-content: center;
           transition: all 0.3s linear; 
           
-
-
         }
 
         .estilosBotonCarrito1:hover {
@@ -432,6 +436,71 @@ h1 {
               opacity: 1;
             }
           }
+
+                    /* PAGINA CONTACTO */
+
+          /* FORMULARIO */
+
+
+.mb-3 {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.form-label {
+
+  font-family: poppins;
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.form-control {
+ 
+  width: 50rem;
+  margin-top: 1rem;
+
+}
+
+.btn {
+
+  margin-top: 2rem;
+  color: #888;
+  background-color: cornflowerblue;
+  font-family: poppins;
+  font-size: 1.5rem;
+  border-radius: 1%;
+  border: solid 1px cornflowerblue ;
+  margin: 2rem;
+  padding: 1rem;
+  
+  
+  
+}
+
+#parrafoProp {
+
+  text-align: center;
+  font-size: 1.5rem;
+  color: #888;
+  margin-top: 2rem;
+  font-family: poppins;
+
+}
+
+.gracias {
+
+  text-align: center;
+  font-size: 1.5rem;
+  color: #888;
+  margin-top: 2rem;
+  font-family: poppins;
+
+
+}
           
          
 
